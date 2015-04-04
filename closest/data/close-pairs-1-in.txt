@@ -1,0 +1,3 @@
+romeo 0 0
+juliet 1 0
+ 

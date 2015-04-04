@@ -1,0 +1,49 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Stable Matching Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Our implementation produces the expected results on all input--output file pairs, except {\tt sm-random-100.txt}, where it matches 54 with 12 instead of 2.
+  We have no idea why this happens.%
+  \sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  For instance, if your implementation passes all tests, then write that.
+  Remove the sidenotes in your final hand-in.
+  }
+
+  On input {\tt sm-bbt-in.txt}, we produce the following matching:
+  \begin{quotation}
+    Sheldon--Amy, Rajesh--Penny, Howard--Bernadette, Leonard--Priya.  \sidenote{Replace with your results.}
+  \end{quotation}
+
+  \section{Implementation details}
+
+  The men's preferences are stored in a left-leaning red--black B-tree with $B=12$ and no inverse anti-snails,%
+  \sidenote{Replace with whatever data structure you actually use.}
+   as described in Section 5.2 of Kleinberg and Tardos, \emph{Algorithms Design}, Addison--Wesley 2013.%
+   \sidenote{If you refer to something, like a book or a stackexchange debate, or an external library, be professional about it.}
+  The women's preferences are stored in a heap.\sidenote{Replace with whatever data structure you actually use.}
+
+  We can check find a free man who has not proposed to every woman in time $[\ldots]$,
+  because we store $[\ldots]$.
+
+  With these data structures, our implementation runs in time $O(n\log n)$  \sidenote{Replace with your actual running time.}
+  on inputs with $n$ men and $n$ women.
+
+
+\end{document}
