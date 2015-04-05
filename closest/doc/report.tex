@@ -1,0 +1,59 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Closest Pair Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Our implementation produces the expected results on all input--output file pairs, except {\tt slotermeier-23-tsp.txt}, where our code reports distance 2.531 as the shortest distance.
+  This may be because of rounding errors, or differences between {\tt float} and {\tt double} on various machines.
+  \sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  For instance, if your implementation passes all tests, then write that.
+  Remove the sidenotes in your final hand-in.
+  }
+
+  The following table shows the closest pairs in the input files {\tt wc-instance-*.txt}.
+  Here $n$ denotes the number of points in the input,
+  and $(u,v)$ denotes a closest pair of points at distance $\delta$.
+
+  \bigskip\noindent
+  \begin{tabular}{rrrr}\toprule
+    $n$ & $u$ & $v$ & $\delta$ \\\midrule
+    2 & 0 & 1 & 1 \\
+    $[\ldots]$ \\\bottomrule
+  \end{tabular}
+
+
+  \section{Implementation details}
+
+  We resort by $y$-coordinates in each recursive step.
+
+  For the comparison of points close to $s$ in $S_y$ we inspect 15 points,
+  as explained (5.10) of Kleinberg and Tardos, \emph{Algorithm Design}, Addison--Wesley 2008.
+  Here is the corresponding part of our code:
+  \begin{verbatim}
+    min = [...]
+    for (s [...]
+      for [...]
+        if (s.distance(...) < min) [...]
+  \end{verbatim}
+
+  Our running time is $O(n\log n)$ for $n$ points.
+  \sidenote{Change or delete as necessary, add anything else you find interesting about your implemenation.}
+
+
+\end{document}
