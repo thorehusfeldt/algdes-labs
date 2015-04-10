@@ -1,3 +1,0 @@
-romeo 0 0
-juliet 0 1
-far 10 0
