@@ -5,11 +5,14 @@ Programming exercises for algorithm design.
 These files are used for my classes in algorithm design.
 Each lab contains a subdirectory for data files and one for documentation.
 
-    ladders
-     /data
+    word-ladders
+     /data/README.md
+     /data/[lots of data files]
      /doc/report.tex
      /doc/report.pdf
-     
+     /doc/word-ladders.tex
+     /doc/word-ladders.pdf
+
 ## Report skeletons
 
 A report skeleton is contained in the doc subdirectory.

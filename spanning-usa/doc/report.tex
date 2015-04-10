@@ -1,0 +1,94 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\usepackage{tikz}
+
+\pagestyle{empty}
+
+
+\title{Word Ladders Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  The following table summarizes our results:\sidenote{Correct the right hand column}
+
+  \bigskip\noindent
+  \begin{tabular}{lr}
+    \toprule
+    Input file & MST total weight \\ \midrule
+    USA-highway-miles.txt	 & 17535 \\
+    tinyEWG-alpha.txt & 321 \\ \bottomrule
+  \end{tabular}
+
+  \bigskip
+  The MST we found in tinyEWG-alpha.txt can be drawn like this:\sidenote{Draw the tree, by hand if you want to.
+  The planar coordinates of the vertex play no role.}
+
+  \medskip
+  \begin{tikzpicture}[
+      scale = .5,
+      every node/.style = {
+        circle, draw, black, inner sep = 1pt, font = \small},
+      every path/.style = {gray}
+      ]
+    \node (A) at (3,1) {A}; % 0
+    \node (B) at (2.2,3.8) {B}; % 1
+    \node (C) at (5.1,1.8) {C}; % 2
+    \node (D) at (4.7,3.8) {D}; % 3
+    \node (E) at (0,0) {E}; % 4
+    \node (F) at (0,3) {F}; % 5
+    \node (G) at (7,0) {G}; % 6
+    \node (H) at (2,2) {H}; % 7
+    \draw (E)--(F);
+    \draw (E)--(H);
+    \draw (F)--(H);
+    \draw (A)--(H);
+    \draw (B)--(F);
+    \draw (A)--(E);
+    \draw (C)--(D);
+    \draw (B)--(H);
+    \draw (A)--(C);
+    \draw (B)--(C);
+    \draw (B)--(D);
+    \draw (C)--(H);
+    \draw (G)--(C);
+    \draw (D)--(G);
+    \draw (G)--(A);
+    \draw (G)--(E);
+    \begin{scope}[every path/.style={ultra thick}]
+      \draw(E)--(F);
+      \draw(G)--(A);
+      \draw(G)--(E);
+      \draw(G)--(C);
+      \draw(G)--(D);
+      \draw(F)--(H);
+      \draw(F)--(B);
+    \end{scope}
+  \end{tikzpicture}
+
+
+  \section{Implementation details}
+
+  We implemented the algorithm of [$\ldots$], using [$\ldots$].%
+  \sidenote{%
+    Explain what you did.
+    Prim?
+    Kruskal?
+    Which priority queue?
+    How did you check connectivity?
+    Be very brief.
+    Three sentences are a lot.}
+  The total running time for implementation is $O(n^3+\log^2 m)$.\sidenote{%
+  Replace as necessary.
+  Use $n$ for the number of vertices,
+    $m$ for the number of edges in the input graph.}
+
+\end{document}

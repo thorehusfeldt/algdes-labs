@@ -1,0 +1,50 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Word Ladders Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Our implementation produces the expected results on all input--output file pairs, except {\tt words-50.txt}, where our code reports distance 12 from zombi to aargh.
+  We have no idea why this happens.%
+  \sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  For instance, if your implementation passes all tests, then write that.
+  Remove the sidenotes in your final hand-in.
+  }
+
+  On input {\tt words-5757.txt}, a shortest path from aargh to zombi of length 3 is the following:
+  \begin{quotation}
+    aargh, dogma, gonad, zombi   \sidenote{Correct and replace as required.}
+  \end{quotation}
+
+  \section{Implementation details}
+
+  We build the graph's edges by iterating over all [$\ldots$]%
+  \sidenote{%
+  Explain what you do.
+  Be very brief.
+  Three sentences are a lot.}
+  The running time for graph construction is $O((n^3+\log^2 m)\cos w)$.\sidenote{%
+  Replace as necessary.
+  Use $n$ for the number of vertices,
+    $m$ for the number of edges in the finished graph, and $w$ for the length of the words.
+    Note that we alsways have $w=5$ in our inputs, but it still makes sense to make the word length visible in the running time.}
+
+  The total running time of our implemenation (including graph construction and traversal) is [$\ldots$].
+
+
+\end{document}
