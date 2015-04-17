@@ -1,0 +1,55 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\pagestyle{empty}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{microtype}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{chains}
+\usetikzlibrary{decorations}
+
+\title{Spanning USA}
+\author{Thore Husfeldt}
+
+\begin{document}
+
+\maketitle
+
+\subsection{Description}
+Find a minimum spanning tree of highway distances between 128 American cities.
+
+\begin{marginfigure}
+\includegraphics[width=2in]{us66.png}
+\end{marginfigure}
+
+\subsection{Requirements}
+
+You algorithm returns a list of edges that constitutes a minimum spanning tree, as well as its total length.
+For the graph described in \verb!USA-highway-miles.in!, the length is 16598.
+
+\paragraph{Minimal solution:} Your algorithm has to work correctly (not only on this input -- otherwise you could just write \verb!print "16598"!) and run in polynomial time. 
+You can decide yourself if you want to use Prim's or Kruskal's algorithm. 
+Note that I don’t require you to implement fancy tricks like a decrease-key priority queue and or a clever union–find data structures for connected components. 
+The graph isn’t that big, and quadratic time will do just fine.
+
+
+\paragraph{Good solution:}
+Solve the problem in $O(m\log n)$ and optimise as much as you can. 
+This involved either writing a good priority queue for Prim's algorithm, or a union–find data structure for Kruskal's. 
+
+\subsection{Tip}
+
+Be careful with reading the input file, names of cities don't necessarily behave as you expect. Especially, if you get the answer 16394, your error is probably in the parsing stage, not in the algorithm. 
+
+
+\subsection{Deliverables}
+
+\begin{enumerate}
+  \item The source code for your implementation
+  \item A report in PDF, including the MST for the graph given by \verb!tinyEWG-alpha.txt!.
+  Use the report skeleton in the {\tt doc directory}.
+  \end{enumerate}
+
+\end{document}
