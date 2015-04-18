@@ -1,0 +1,64 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Gorilla Report}
+\author{Alice Cooper and Bob Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Our implementation produces the expected results on all pairs of species, except for Unicorn and Yog-Soggoth.
+  We have no idea why this happens.%
+  \sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  For instance, if your implementation passes all tests, then write that.
+  Remove the sidenotes in your final hand-in.
+  }
+
+  We compared the species in \verb!HbB_FASTAs-in.txt!
+  with the common rat, given by
+
+  \begin{verbatim}
+  MVHLTDAEKA AVNALWGKVN PDDVGGEALG RLLVVYPWTQ RYFDSFGDLS
+  SASAIMGNPK VKAHGKKVIN AFNDGLKHLD NLKGTFAHLS ELHCDKLHVD
+  PENFRLLGNM IVIVLGHHLG KEFTPCAQAA FQKVVAGVAS ALAHKYH
+  \end{verbatim}
+
+  The closest species to \emph{Rattus rattus} is $[\ldots]$, with the following optimal alignment:\sidenote{Replace with actual alignment between the two species.}
+
+\medskip
+  \begin{fullwidth}\small
+  \begin{verbatim}
+  MVHLTDAEKAAVNALWGKVNPDDV-YGGEAL----VVYPWTQRYFDSFGDLS
+  MVHLTDAEKAAVNALWGKVNPDDVX-GGEALGRLLVVYPWTIRYFDSFGDLS
+
+  SASAIMGNPKVKAHGKKVINAFND---KHLDNLKGTFAHLSELHTDKLHVDPENFRLLGN
+  SASAIMGNPKVKAHGKKVINAFNDDVHKHLDNLKGTFAHLSELHSDKLHVDPENFRLLGN
+
+  MIVIVLGHHLGKEFTPC----------AQAAFQKVVAGVASALAHKYH
+  MIVIVLGHHLGKEFTPCVOLKSWAGENAQAAFQKVVAGVASALAHKYH
+  \end{verbatim}
+\end{fullwidth}
+
+
+
+  \section{Implementation details}
+
+  We chose a recursive/iterative implementation.
+  For two sequences of length $n$ and $m$, respectively, our implementation uses $O((n^3+\log^2 m)\cos n)$ time and
+  $O(1)$ space.\sidenote{%
+  Correct, replace, rewrite as necessary.}
+
+
+\end{document}
