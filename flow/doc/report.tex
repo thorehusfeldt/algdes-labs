@@ -1,0 +1,79 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\pagestyle{empty}
+
+
+\title{Flow Report}
+\author{Anatoli Cooper and Boris Marley}
+
+\begin{document}
+  \maketitle
+
+  \section{Results}
+
+  Our implementation successfully computes a flow of 163 on the input file, confirming the analysis of the American enemy.
+  \sidenote{%
+  Complete the report by filling in your correct names,
+  filling in the parts marked $[\ldots]$,
+  and changing other parts wherever necessary.
+  Remove the sidenotes in your final hand-in.
+  Insert `comrades!' and `for the motherland' wherever you see fit.
+  }
+
+  We have analysed the possibilities of descreasing the capacities near Minsk.
+  Our analysis is summaries in the following table:\sidenote{%
+    Complete and correct the table.
+  }
+
+\bigskip
+  \begin{tabular}{rccc}\toprule
+    Case & 4W--48 & 4W--49 & Effect on flow \\\midrule
+    1& 30& 20 & no change \\
+    2& 20 &30 & no change \\
+    3&20 & 20& $-10$ \\
+    $[\ldots]$ \\\bottomrule
+  \end{tabular}
+  \bigskip
+
+  In case 4, the new bottleneck becomes
+  \begin{quote}
+      1--44, 3--2, $[\ldots]$
+  \end{quote}
+  The comrade from Minsk is advised to $[\ldots]$.
+
+  \section{Implementation details}
+
+  We use a straighforward implemenation of Bellman--Quine's flow algorithm as described in Bronstein, \emph{Foundations of Algorithms}, chap.~6.
+  We use Prim's algorithm to find an augmenting path and also implement the neat trick of flow by recomputing the inverse of the antisnail every 2nd iteration.\sidenote{%
+    Replace by a description of what you actually do.
+  }
+
+  The running time is $[\ldots]$.
+
+  We have implemented each undirected edge in the input graph as a $[\ldots]$.
+  In the corresponding residual graph, the edge is represented by a $[\ldots]$.
+  Our datatype for edge is this:
+  \sidenote{%
+    What I wrote here is complete nonsense, of course.
+    Replace by a description of your actual implementation---what \emph{did} you use?
+    A pair of directed edges?
+    A single undirected edges with a bit to see in which direction the flow goes?
+    As indicated, it makes sense to actually include your datatype for edge in the report.
+    Here, and in general, it makes sense to have written short and sweet code.
+  }
+  \begin{verbatim}
+    class FlowEdge
+    {
+      Vertex from, to;
+      GUISwingComponentFactory bar;
+      Edge next, parent, foo;
+    }
+  \end{verbatim}
+
+
+\end{document}
