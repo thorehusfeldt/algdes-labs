@@ -1,0 +1,96 @@
+#!/usr/bin/perl -w
+use strict;
+
+# Usage examples:
+# ./stable-marriage-instance worst 5
+# ./stable-marriage-instance random 10
+# ./stable-marriage-instance random 10 0
+#
+# (The last invocation produces an n=10 random instance where
+# the random seed is initialised as srand(0))
+  
+my $type= shift @ARGV;
+die ("First argument must be 'random' or 'worst'") 
+  unless $type =~ /random|worst/i;
+
+my $n= shift @ARGV;
+die ("Second argument must be positive integer") unless $n =~ /\d+/;
+
+print "\# ", ($type=~/random/) ? " Random" : "Worst case",
+  " instance for Gale-Shapley\nn=$n";
+
+if (@ARGV)
+{
+    my $s = shift @ARGV;
+    die ("Third argument must be a positive integer") unless $s =~ /\d+/;
+    srand($s);
+    print " seed=$s";
+}
+
+print "\n";
+
+for (1..2*$n)
+{
+    print "$_ $_\n"
+}
+
+
+print "\n";
+
+for (1..2*$n)
+{ my @ranks= (1..$n);
+  @ranks= map { $_= 2*$_ } @ranks; # @ranks= (2, 4, 6, ...,  2*$n);
+  if ($_ % 2 == 0)                 # Even indices (women's lists):
+  {
+      @ranks= map { $_= $_ -1 } @ranks; # @ranks= (1, 3, 5, ...,  2*$n-1);
+  }
+  if ($type =~ /random/i)
+    {
+      fisher_yates_shuffle(\@ranks);
+    }
+  else 
+    {
+      worsify($_,\@ranks);
+    }
+  print "$_: @ranks\n";
+}
+  
+# fisher_yates_shuffle( \@array ) : generate a random permutation
+# of @array in place
+sub fisher_yates_shuffle {
+    my $array = shift;
+    my $i;
+    for ($i = @$array; --$i; ) {
+        my $j = int rand ($i+1);
+        next if $i == $j;
+        @$array[$i,$j] = @$array[$j,$i];
+    }
+}
+
+
+sub worsify
+  {
+    my $i= shift;
+    my $ranks= shift;
+    if (($i % 2) == 0)  # woman
+      {
+	$i/=2;    # $i= 1,2,...,$n
+	for (1..$i)
+	  {
+	    my $head= shift @$ranks;
+	    push @$ranks, $head;
+	  }
+      }
+    else # man
+      {
+	$i+=1;
+	$i/=2;  # $i= 1,2,...,$n
+	my $end= pop @$ranks;
+	for (2..$i)
+	  {
+	    my $head= shift @$ranks;
+	    push @$ranks, $head;
+	  }
+	push @$ranks, $end
+      }
+  }
