@@ -16,6 +16,7 @@ A typical input file looks like this:
     4 Phoebe
     5 Joey
     6 Rachel
+    
     1: 6 4 2
     2: 3 5 1
     3: 2 6 4
