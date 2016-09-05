@@ -30,7 +30,7 @@ The following 2n lines describe m1, w1, ..., mn, wn, in that order.
 Every line starts with an identifying integer id, starting with 1, followed by a single space, followed by a nonempty string name of non-whitespace characters (such as letters, digits, punctuation).
 Odd-numbered lines are men, even-numbered lines are women.
 Then follows a blank line.
-Finally, there is a line for every id (in order) that describes a preference list.
+Finally, there is a line for every id (not necessarily in order) that describes a preference list.
 The line starts with id, followed by a colon and a single space.
 Then follows a permutation of the ids of the opposite gender, separated by a single space.
 
