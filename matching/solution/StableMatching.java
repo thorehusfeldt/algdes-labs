@@ -42,6 +42,7 @@ public class StableMatching{
 	}
 	
 	private void createTinder(){
+		System.out.println("Tinder is being built...");
 		String[] grooms, juliets;
 		String choices ;
 		Bride bride; Groom groom;
@@ -63,6 +64,7 @@ public class StableMatching{
 			StableMatching stable = new StableMatching(input);
 			stable.createMap();
 			stable.createTinder();	
+			System.out.println("Single Grooms" + Groom.N);
 			while(true){
 				if(Groom.N == 0){
 					printMatchings();
@@ -105,9 +107,15 @@ class Groom extends Partner{
 	public Groom(int id, int[] juliets){
 		super(id);
 		this.juliets = juliets;
+		System.out.println(" Groom with id: " + id + " is created");
+		for(int i : juliets)
+			System.out.print(i + " ");
+		System.out.println("\n --------");
+		
 	}
 	
 	public void propose(){
+		System.out.println(" Groom proposes to " + juliets[counter]);
 		Bride bride = (Bride) StableMatching.tinder.get(juliets[counter++]);
 		bride.proposedBy(this);
 	}
@@ -138,6 +146,9 @@ class Bride extends Partner{
 	public Bride(int id, int[] grooms){
 		super(id);
 		doINeedSomeSpace = buildMap(grooms);
+		System.out.println("New Bride with id: " + id);
+		for(int i : grooms)
+			System.out.print(i + " ");
 	}
 	
 	@Override
@@ -150,7 +161,7 @@ class Bride extends Partner{
 		}else{
 			int currentGroomId = currentGroom.getId();
 			int wannabeGroomId = wannabeGroom.getId();
-			if(doINeedSomeSpace.get(wannabeGroomId).compareTo(doINeedSomeSpace.get(currentGroomId)) < 0){
+			if(doINeedSomeSpace.get(wannabeGroomId).compareTo(doINeedSomeSpace.get(currentGroomId)) > 0){
 				currentGroom.itIsNotYouItIsMe();
 				wannabeGroom.youAreNotSingleAnymore();
 				currentGroom = wannabeGroom;
