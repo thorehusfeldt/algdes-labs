@@ -1,11 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.PriorityQueue;
 public class StableMatching{
 	static Map<Integer, Partner> tinder;
-	private Map<Integer, String> map;
+	private HashMap<Integer, String> map;
 	private Scanner input;
 	private int couples;
 
@@ -18,9 +17,12 @@ public class StableMatching{
 			System.out.println("Scanner is empty");
 			System.exit(2);
 		}
+		String diesi = "#", comment;
 		HashMap<Integer, String> tmp = new HashMap<>();
-		input.nextLine();input.nextLine();
-		couples = ( Integer.parseInt(input.nextLine().substring(2,3)) * 2);
+		do{
+		 comment = input.nextLine();
+		}while(comment.startsWith(diesi));
+		couples = (Integer.parseInt(comment.substring(2)) * 2);
 		Groom.N = couples / 2;
 		for(int i = 1; i <= couples; i++){
 			input.next();
@@ -42,7 +44,6 @@ public class StableMatching{
 	}
 	
 	private void createTinder(){
-		System.out.println("Tinder is being built...");
 		String[] grooms, juliets;
 		String choices ;
 		Bride bride; Groom groom;
@@ -64,25 +65,24 @@ public class StableMatching{
 			StableMatching stable = new StableMatching(input);
 			stable.createMap();
 			stable.createTinder();	
-			System.out.println("Single Grooms" + Groom.N);
-			while(true){
-				if(Groom.N == 0){
-					printMatchings();
-					return;	
-				}else{
-					Groom groom =  null;
-					for(Integer id : Groom.singleMales){
-							groom = (Groom) tinder.get(id);
-							break;
-					}
-					while(!groom.isEngaged()){
-						groom.propose();
-					}	
-				}
+			Groom groom;
+			while(Groom.singleMales.size() != 0){
+				groom = (Groom) tinder.get(Groom.singleMales.poll());
+				while(!groom.isEngaged()){
+					groom.propose();
+				}	
 			}
+			stable.printMatchings();
+		
 		}
 	}
-	private static void printMatchings(){
+	private void printMatchings(){
+		System.out.println("Bride -- Groom");
+		Bride bride;
+		for(int i = 2; i <= couples; i +=2){
+			bride =(Bride) (tinder.get(i));
+			System.out.println(this.map.get(bride.getCurrentGroomId()) + " -- " + this.map.get(bride.getId()));
+		}		
 	}
 	
 }
@@ -98,7 +98,7 @@ class Partner{
 
 class Groom extends Partner{
 	//Change this with another more efficient DS
-	static ArrayList<Integer>  singleMales = new ArrayList<>(); 
+	static PriorityQueue<Integer>  singleMales = new PriorityQueue<>(); 
 	private final int[] juliets;
 	private int counter;
 	static int N;
@@ -107,15 +107,9 @@ class Groom extends Partner{
 	public Groom(int id, int[] juliets){
 		super(id);
 		this.juliets = juliets;
-		System.out.println(" Groom with id: " + id + " is created");
-		for(int i : juliets)
-			System.out.print(i + " ");
-		System.out.println("\n --------");
-		
 	}
 	
 	public void propose(){
-		System.out.println(" Groom proposes to " + juliets[counter]);
 		Bride bride = (Bride) StableMatching.tinder.get(juliets[counter++]);
 		bride.proposedBy(this);
 	}
@@ -146,9 +140,6 @@ class Bride extends Partner{
 	public Bride(int id, int[] grooms){
 		super(id);
 		doINeedSomeSpace = buildMap(grooms);
-		System.out.println("New Bride with id: " + id);
-		for(int i : grooms)
-			System.out.print(i + " ");
 	}
 	
 	@Override
@@ -161,12 +152,20 @@ class Bride extends Partner{
 		}else{
 			int currentGroomId = currentGroom.getId();
 			int wannabeGroomId = wannabeGroom.getId();
-			if(doINeedSomeSpace.get(wannabeGroomId).compareTo(doINeedSomeSpace.get(currentGroomId)) > 0){
+			if(doINeedSomeSpace.get(wannabeGroomId).compareTo(doINeedSomeSpace.get(currentGroomId)) < 0){
 				currentGroom.itIsNotYouItIsMe();
+				assert(currentGroom.isEngaged() == false);
 				wannabeGroom.youAreNotSingleAnymore();
 				currentGroom = wannabeGroom;
 			}
 		}
+	}
+	public Groom getCurrentGroom(){
+		return this.currentGroom;
+	}
+	
+	public Integer getCurrentGroomId(){
+		return this.currentGroom.id;
 	}
 	
 	private static  Map<Integer, Integer> buildMap(int[] groomsId){
