@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.PriorityQueue;
+import java.util.Stack;
+
 public class StableMatching{
 	static Map<Integer, Partner> tinder;
 	private HashMap<Integer, String> map;
@@ -45,7 +47,7 @@ public class StableMatching{
 	
 	private void createTinder(){
 		String[] grooms, juliets;
-		String choices ;
+		String choices;
 		Bride bride; Groom groom;
 		tinder = new HashMap<>();
 		for(int i = 1; i <= couples; i++){
@@ -55,7 +57,7 @@ public class StableMatching{
 			}else { //Grooms
 				groom = new Groom(i, extractArray(input.nextLine()));
 				tinder.put(i, groom);	
-				Groom.singleMales.add(i);
+				Groom.singleMales.push(i);
 			}
 		}
 	}
@@ -67,7 +69,7 @@ public class StableMatching{
 			stable.createTinder();	
 			Groom groom;
 			while(Groom.singleMales.size() != 0){
-				groom = (Groom) tinder.get(Groom.singleMales.poll());
+				groom = (Groom) tinder.get(Groom.singleMales.pop());
 				while(!groom.isEngaged()){
 					groom.propose();
 				}	
@@ -77,7 +79,6 @@ public class StableMatching{
 		}
 	}
 	private void printMatchings(){
-		System.out.println("Bride -- Groom");
 		Bride bride;
 		for(int i = 2; i <= couples; i +=2){
 			bride =(Bride) (tinder.get(i));
@@ -98,7 +99,7 @@ class Partner{
 
 class Groom extends Partner{
 	//Change this with another more efficient DS
-	static PriorityQueue<Integer>  singleMales = new PriorityQueue<>(); 
+	static Stack<Integer>  singleMales = new Stack<>(); 
 	private final int[] juliets;
 	private int counter;
 	static int N;
@@ -110,7 +111,8 @@ class Groom extends Partner{
 	}
 	
 	public void propose(){
-		Bride bride = (Bride) StableMatching.tinder.get(juliets[counter++]);
+		
+		Bride bride = (Bride) StableMatching.tinder.get(juliets[counter++]);;
 		bride.proposedBy(this);
 	}
 	@Override
@@ -118,12 +120,11 @@ class Groom extends Partner{
 	
 	public void youAreNotSingleAnymore(){
 		this.isEngaged = true;
-		singleMales.remove(this.id);
 		N--;
 	}
 	public void itIsNotYouItIsMe(){
 		this.isEngaged = false;
-		singleMales.add(this.id);
+		singleMales.push(this.id);
 		N++;
 	}
 	public boolean isEngaged(){
