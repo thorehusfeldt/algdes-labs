@@ -6,6 +6,7 @@ import java.util.Stack;
 
 public class StableMatching{
 	static Map<Integer, Partner> tinder;
+	static Stack<Integer>  singleMales = new Stack<>(); 	
 	private HashMap<Integer, String> map;
 	private Scanner input;
 	private int couples;
@@ -48,7 +49,7 @@ public class StableMatching{
 			tinder.put(id, new Bride(id, arr));
 		}else{
 			tinder.put(id, new Groom(id, arr));
-			Groom.singleMales.push(id);
+			singleMales.push(id);
 		}
 	}
 	
@@ -67,8 +68,8 @@ public class StableMatching{
 			stable.createMap();
 			stable.createTinder();	
 			Groom groom;
-			while(Groom.singleMales.size() != 0){
-				groom = (Groom) tinder.get(Groom.singleMales.pop());
+			while(singleMales.size() != 0){
+				groom = (Groom) tinder.get(singleMales.pop());
 				while(!groom.isEngaged()){
 					groom.propose();
 				}	
@@ -98,7 +99,7 @@ class Partner{
 
 class Groom extends Partner{
 	//Change this with another more efficient DS
-	static Stack<Integer>  singleMales = new Stack<>(); 
+
 	private final int[] juliets;
 	private int counter;
 	static int N;
@@ -123,7 +124,7 @@ class Groom extends Partner{
 	}
 	public void itIsNotYouItIsMe(){
 		this.isEngaged = false;
-		singleMales.push(this.id);
+		StableMatching.singleMales.push(this.id);
 		N++;
 	}
 	public boolean isEngaged(){
