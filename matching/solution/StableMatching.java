@@ -34,31 +34,30 @@ public class StableMatching{
 		map = tmp;
 	}
 	
-	private int[] extractArray(String choices){
+	private void extract(String choices){
 		String[] str = choices.split(":");
 		choices = str[1].trim(); 
+		Integer id = Integer.parseInt(str[0]);
 		String[] tmp = choices.split(" ");
 		int[] arr = new int[tmp.length];
 		int count = 0;
-		for(String str1 : tmp)
+		for(String str1 : tmp){
 			arr[count++] = Integer.parseInt(str1);
-		return arr; 
+		}
+		if(id % 2 == 0){
+			tinder.put(id, new Bride(id, arr));
+		}else{
+			tinder.put(id, new Groom(id, arr));
+			Groom.singleMales.push(id);
+		}
 	}
 	
 	private void createTinder(){
-		String[] grooms, juliets;
 		String choices;
 		Bride bride; Groom groom;
 		tinder = new HashMap<>();
-		for(int i = 1; i <= couples; i++){
-			if(i % 2 == 0){ //Brides
-				bride = new Bride(i, extractArray(input.nextLine()));	
-				tinder.put(i, bride);
-			}else { //Grooms
-				groom = new Groom(i, extractArray(input.nextLine()));
-				tinder.put(i, groom);	
-				Groom.singleMales.push(i);
-			}
+		while(input.hasNext()){
+			extract(input.nextLine());
 		}
 	}
 
