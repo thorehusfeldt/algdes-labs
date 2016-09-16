@@ -63,7 +63,7 @@ public class ClosestPoints{
 		return	ClosestPairRec(pointsX, pointsY ,0, points.length);
 	}
 	private Point[] ClosestPairRec(Point[] px, Point[] py, int from, int to){
-		System.out.println("from: "+ from + ", to: " + to );
+		//System.out.println("from: "+ from + ", to: " + to );
 		if(to - from <= 3){
 			return computeMinDistance(px, py);
 		}
@@ -77,12 +77,56 @@ public class ClosestPoints{
 		Point[] left = ClosestPairRec(qX, qY, from1, to1);
 		Point[] right = ClosestPairRec(rX, rY, from2, to2);
 		double d = Math.min(left[0].distanceTo(left[1]), right[0].distanceTo(right[1]));
-
-
-			return null;
-		
+		System.out.println(d);
+		Point x = qX[qX.length - 1];
+		Point[] S = constructS(d, x);
+		Point[] Sy = S;
+		Arrays.sort(Sy, yComparator);
+		double min = Double.MAX_VALUE;
+		Point[] center = new Point[2];
+		int countj;
+		System.out.println("length: "+ Sy.length);
+		System.out.println(min);
+		for(int i = 0; i < Sy.length; i++){
+			countj =0;
+			for(int j = i + 1; j < S.length; j++){
+				if(countj++ >  16)
+					break;
+				System.out.println(Sy[i] +" "+Sy[j]);
+				if(Sy[i].distanceTo(Sy[j]) < min){
+					min = Sy[i].distanceTo(Sy[j]);
+					System.out.print("Change min to: " +min); 
+					center[0] = Sy[i];
+					center[1] = Sy[j];
+				}
+			}
+		}
+		double ds;
+		try{
+			ds = center[0].distanceTo(center[1]);
+		}catch(NullPointerException e){
+			ds = d + 1000.0;
+		}
+		if(ds < d)
+			return center;
+		else if(left[0].distanceTo(left[1]) < right[0].distanceTo(right[1]))
+			return left;
+		else 
+			return right;
 	}
+	private Point[] constructS(double d, Point x){
+		ArrayList<Point> l = new ArrayList<>();
+		for(Point p: pointsX){
+			if(p.distanceTo(x) < d)
+				l.add(p);
+		}
+		Point[] res = new Point[l.size()];
+		int count = 0;
+		for(Point p : l)
+			res[count++] = p;
 
+		return  res;
+	}
 	private static void print(Point[] parr){
 		for( Point p : parr)
 			System.out.println(p);
@@ -135,7 +179,7 @@ public class ClosestPoints{
 		}
 		return res;
 	}
-private static class Point{
+	private static class Point{
     	final double xCoordinate;
 		final double yCoordinate;
 		final int id; 
@@ -146,7 +190,7 @@ private static class Point{
 			this.id = id;
 		}
 		double distanceTo(Point p){
-			if(p == this)
+			if(p.equals(this))
 		    	return Double.MAX_VALUE;
 			return Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
 		}
