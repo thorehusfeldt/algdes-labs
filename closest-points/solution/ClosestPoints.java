@@ -38,12 +38,12 @@ public class ClosestPoints{
 		    points[count++] = p;
 		sort();
 		Point[] result = closestPair();
-		double d = result[0].distanceTo(result[1]);
+		Point p1 = result[0];
+		Point p2 = result[1];
+		double d = p1.distanceTo(p2);
 		int size = pointsX.length;
-		int id1 = result[0].getId();
-		int id2 = result[1].getId();
-		String head = "n\tu\tv\td\n";
-		String res = ""+size+"\t"+id1+"\t"+id2+"\t"+d;
+		String head = "n\t\tu\t\tv\td\n";
+		String res = ""+size+"\t("+p1.getX()+", "+p1.getY()+")\t("+p2.getX()+", "+p2.getY()+")\t"+d;
 		return head + res;
 			
 	}
@@ -72,7 +72,6 @@ public class ClosestPoints{
 		return	ClosestPairRec(pointsX, pointsY ,0, points.length);
 	}
 	private Point[] ClosestPairRec(Point[] px, Point[] py, int from, int to){
-		//System.out.println("from: "+ from + ", to: " + to );
 		if(to - from <= 3){
 			return computeMinDistance(px, py);
 		}
@@ -86,7 +85,6 @@ public class ClosestPoints{
 		Point[] left = ClosestPairRec(qX, qY, from1, to1);
 		Point[] right = ClosestPairRec(rX, rY, from2, to2);
 		double d = Math.min(left[0].distanceTo(left[1]), right[0].distanceTo(right[1]));
-		//System.out.println(d);
 		Point x = qX[qX.length - 1];
 		Point[] S = constructS(d, x);
 		Point[] Sy = S;
@@ -94,17 +92,13 @@ public class ClosestPoints{
 		double min = Double.MAX_VALUE;
 		Point[] center = new Point[2];
 		int countj;
-		//System.out.println("length: "+ Sy.length);
-		//System.out.println(min);
 		for(int i = 0; i < Sy.length; i++){
 			countj =0;
 			for(int j = i + 1; j < S.length; j++){
 				if(countj++ >  16)
 					break;
-				//System.out.println(Sy[i] +" "+Sy[j]);
 				if(Sy[i].distanceTo(Sy[j]) < min){
 					min = Sy[i].distanceTo(Sy[j]);
-				//	System.out.print("Change min to: " +min); 
 					center[0] = Sy[i];
 					center[1] = Sy[j];
 				}
@@ -146,7 +140,6 @@ public class ClosestPoints{
 		final Point[] qY = new Point[to1 - from1];
 		final Point[] qX = new Point[to1 - from1];
 		int count = 0;
-		//Already Sort
 		Thread t1 = new Thread(() ->{
 			int count1 = from1;
 			int  size1 = to1 - from1;
