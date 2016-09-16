@@ -14,14 +14,15 @@ public class ClosestPoints{
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
 		ClosestPoints cp = new ClosestPoints(input);
-		try{ cp.build();
+		try{
+			System.out.println(cp.build());
 		}catch(InterruptedException e){System.exit(42);}
 
 	}
 	public ClosestPoints(Scanner input){
 		this.input = input;
 	}
-	public void build() throws InterruptedException{
+	public String build() throws InterruptedException{
 		while(!input.hasNextInt()){
 			System.out.println(input.nextLine());
 		}
@@ -36,13 +37,21 @@ public class ClosestPoints{
 		for(Point p : list)
 		    points[count++] = p;
 		sort();
+		Point[] result = closestPair();
+		double d = result[0].distanceTo(result[1]);
+		int size = pointsX.length;
+		int id1 = result[0].getId();
+		int id2 = result[1].getId();
+		String head = "n\tu\tv\td\n";
+		String res = ""+size+"\t"+id1+"\t"+id2+"\t"+d;
+		return head + res;
+			
 	}
 	private void  sort() throws InterruptedException {
 		Thread t1 = new Thread(() -> sortByX());
 		Thread t2 = new Thread(() -> sortByY());
 		t1.start(); t2.start();
 		t1.join();t2.join();
-		closestPair();
 	}
 
     private void sortByX(){
@@ -77,7 +86,7 @@ public class ClosestPoints{
 		Point[] left = ClosestPairRec(qX, qY, from1, to1);
 		Point[] right = ClosestPairRec(rX, rY, from2, to2);
 		double d = Math.min(left[0].distanceTo(left[1]), right[0].distanceTo(right[1]));
-		System.out.println(d);
+		//System.out.println(d);
 		Point x = qX[qX.length - 1];
 		Point[] S = constructS(d, x);
 		Point[] Sy = S;
@@ -85,17 +94,17 @@ public class ClosestPoints{
 		double min = Double.MAX_VALUE;
 		Point[] center = new Point[2];
 		int countj;
-		System.out.println("length: "+ Sy.length);
-		System.out.println(min);
+		//System.out.println("length: "+ Sy.length);
+		//System.out.println(min);
 		for(int i = 0; i < Sy.length; i++){
 			countj =0;
 			for(int j = i + 1; j < S.length; j++){
 				if(countj++ >  16)
 					break;
-				System.out.println(Sy[i] +" "+Sy[j]);
+				//System.out.println(Sy[i] +" "+Sy[j]);
 				if(Sy[i].distanceTo(Sy[j]) < min){
 					min = Sy[i].distanceTo(Sy[j]);
-					System.out.print("Change min to: " +min); 
+				//	System.out.print("Change min to: " +min); 
 					center[0] = Sy[i];
 					center[1] = Sy[j];
 				}
@@ -199,6 +208,9 @@ public class ClosestPoints{
 		}
 		public double getY(){
 			return this.yCoordinate;
+		}
+		public int getId(){
+			return this.id;
 		}
 		public String toString(){
 			String str =   "id: "+this.id + " x: " + this.getX() + " y: " + this.getY();
