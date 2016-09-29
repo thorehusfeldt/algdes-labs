@@ -55,11 +55,19 @@ public class SequenceAlignment{
 	}
 
 	private void sequenceAlignment(){
-		
+			sequence_Alignment(list[0].getGenome(), list[1].getGenome,
+							this.list, this.penalties);
+						
 	}
-	private static void sequence_Alignment(String x, String y){
-
-	
+	private static void sequence_Alignment(String x, String y, 
+					Map<Character, Integer> map, int[][] penalties){
+		final int lx = x.length(), ly = y.length();
+		final int[][] cost = new int[lx][ly];	
+		for(char cx : x.toCharArray()){
+				for(char cy : y.toCharArray()){
+						System.out.println( "cx: " + cx + ", cy:  " + cy+ " penalty cost: "+ penalties[map.get(cx)][map.get(cy)]);
+				}
+		}
 	}
 
 	private static int[][] createBlosum(Map<Character, Integer> indexMap) throws IOException{
@@ -103,6 +111,10 @@ public class SequenceAlignment{
 		}
 		public String toString(){
 				return this.name +" : "+ this.genome;
+		}
+
+		public String getGenome(){
+				return this.genome;
 		}
 	}
 }
