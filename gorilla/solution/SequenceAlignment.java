@@ -1,9 +1,10 @@
 import java.io.FileReader;
+import java.util.Scanner;
 import java.io.BufferedReader;
-//import java.util.stream.Stream;
+import java.util.stream.Stream;
 import java.io.IOException;
-//import java.util.function.Function;
-//import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 public class SequenceAlignment{
 	final private int[][] penalties;
 	final private Map<Character, Integer> indexMap;
-	final private List<Organism> list;
+	final private Organism[] organisms;
+	final private int delta;
 
 	public static void main(String[] args){
 		SequenceAlignment sq;
@@ -30,12 +32,12 @@ public class SequenceAlignment{
 		Map<Character, Integer> map = new HashMap<>();
 		penalties = createBlosum(map);
 		indexMap = map;
-		list = build(fastas);
-		sequenceAlignment();
+		delta = penalties[map.get('*')][1];
+		organisms = build(fastas);
 	}
 
 
-	private static List<Organism> build(String fastas) throws IOException {
+	private static Organism[] build(String fastas) throws IOException {
 		try(BufferedReader br = new BufferedReader(new FileReader(fastas))){
 			List<Organism> l = new ArrayList<>();
 			StringBuilder builder = new StringBuilder();
@@ -50,24 +52,38 @@ public class SequenceAlignment{
 				}
 			}
 			l.add(new Organism(name, builder.toString()));
-			return l;
+			Organism[] o = new Organism[l.size()];
+			return l.toArray(o);
 		}
 	}
 
-	private void sequenceAlignment(){
-			sequence_Alignment(list[0].getGenome(), list[1].getGenome,
-							this.list, this.penalties);
-						
-	}
-	private static void sequence_Alignment(String x, String y, 
-					Map<Character, Integer> map, int[][] penalties){
-		final int lx = x.length(), ly = y.length();
-		final int[][] cost = new int[lx][ly];	
-		for(char cx : x.toCharArray()){
-				for(char cy : y.toCharArray()){
-						System.out.println( "cx: " + cx + ", cy:  " + cy+ " penalty cost: "+ penalties[map.get(cx)][map.get(cy)]);
-				}
+	private String[] sequenceAlignment(){
+		for(int i = 0; i < organisms.length; i++){
+			for(int j = i + 1; j < organisms.length; j++){
+				System.out.println(organisms[i].getName() +" -----" + organisms[j].getName());
+				System.out.println(sequence_Alignment(organisms[i].getGenome(), organisms[j].getGenome(),
+								this.indexMap, this.penalties, this.delta)[0]);
+			}
 		}
+		return null;						
+	}
+	private static String[] sequence_Alignment(String x, String y, 
+					Map<Character, Integer> map, int[][] penalties, int delta){
+		final char[] arrX = x.toCharArray(), arrY = y.toCharArray();
+		final int lx = arrX.length, ly = arrY.length;
+		final int[][] cost = new int[lx + 1][ly + 1];	
+		for(int i =0; i < lx; i++){ cost[i][0] = delta * i;}
+		for(int j =0; j < ly; j++){ cost[0][j] = delta * j;}
+		for(int i = 1; i <= lx; i++){
+			int idxX = map.get(arrX[i-1]); 
+			for(int j = 1; j <= ly; j++){
+				int idxY = map.get(arrY[j - 1]);
+				cost[i][j] = Math.max(
+								Math.max((penalties[idxX][idxY] + cost[i-1][j-1]), (delta + cost[i][j - 1])),
+								(delta + cost[i - 1][j]));
+			}
+		}
+		return new String[]{String.valueOf(cost[lx][ly])};
 	}
 
 	private static int[][] createBlosum(Map<Character, Integer> indexMap) throws IOException{
@@ -115,6 +131,9 @@ public class SequenceAlignment{
 
 		public String getGenome(){
 				return this.genome;
+		}
+		public String getName(){
+			return this.name;
 		}
 	}
 }
