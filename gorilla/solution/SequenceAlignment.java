@@ -1,9 +1,9 @@
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.util.stream.Stream;
+//import java.util.stream.Stream;
 import java.io.IOException;
-import java.util.function.Function;
-import java.util.function.Predicate;
+//import java.util.function.Function;
+//import java.util.function.Predicate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -18,6 +18,7 @@ public class SequenceAlignment{
 		SequenceAlignment sq;
 		try{
 			sq = new SequenceAlignment(args[0]);
+			sq.sequenceAlignment();
 
 		}catch(IOException e){
 			System.out.println("File: "+ args[0]+" not found");
@@ -30,6 +31,7 @@ public class SequenceAlignment{
 		penalties = createBlosum(map);
 		indexMap = map;
 		list = build(fastas);
+		sequenceAlignment();
 	}
 
 
@@ -37,18 +39,27 @@ public class SequenceAlignment{
 		try(BufferedReader br = new BufferedReader(new FileReader(fastas))){
 			List<Organism> l = new ArrayList<>();
 			StringBuilder builder = new StringBuilder();
-			String st, name= br.readLine().substring(1), start = ">"; 
+			String st, name= br.readLine().substring(1).split(" ")[0], start = ">"; 
 			while((st = br.readLine()) != null){
 				if(st.startsWith(start)){
 					l.add(new Organism(name, builder.toString()));
 					builder = new StringBuilder();
-					name = st.substring(1);
+					name = st.substring(1).split(" ")[0];
 				}else{
 					builder.append(st);
 				}
 			}
+			l.add(new Organism(name, builder.toString()));
 			return l;
 		}
+	}
+
+	private void sequenceAlignment(){
+		
+	}
+	private static void sequence_Alignment(String x, String y){
+
+	
 	}
 
 	private static int[][] createBlosum(Map<Character, Integer> indexMap) throws IOException{
@@ -89,6 +100,9 @@ public class SequenceAlignment{
 		public Organism(String name, String genome){
 			this.name = name;
 			this.genome = genome;
+		}
+		public String toString(){
+				return this.name +" : "+ this.genome;
 		}
 	}
 }
