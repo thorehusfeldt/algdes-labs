@@ -17,75 +17,113 @@ public class SequenceAlignment{
 	final private int delta;
 
 	public static void main(String[] args){
-		SequenceAlignment sq;
+		SequenceAlignment sq = null;
 		try{
-			sq = new SequenceAlignment(args[0]);
-			sq.sequenceAlignment();
-
+			sq = new SequenceAlignment();
 		}catch(IOException e){
-			System.out.println("File: "+ args[0]+" not found");
-			System.exit(1);
+			System.out.println("File blosum not found..");
+			System.exit(19);
 		}
+			sq.print();
+		
 	}
 
-	public SequenceAlignment(String fastas) throws IOException {
+	public SequenceAlignment() throws IOException {
 		Map<Character, Integer> map = new HashMap<>();
 		penalties = createBlosum(map);
 		indexMap = map;
 		delta = penalties[map.get('*')][1];
-		organisms = build(fastas);
+		organisms = build();
 	}
 
-
-	private static Organism[] build(String fastas) throws IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader(fastas))){
-			List<Organism> l = new ArrayList<>();
-			StringBuilder builder = new StringBuilder();
-			String st, name= br.readLine().substring(1).split(" ")[0], start = ">"; 
-			while((st = br.readLine()) != null){
-				if(st.startsWith(start)){
-					l.add(new Organism(name, builder.toString()));
-					builder = new StringBuilder();
-					name = st.substring(1).split(" ")[0];
-				}else{
-					builder.append(st);
-				}
+	private static Organism[] build() {
+		Scanner input = new Scanner(System.in);
+		List<Organism> l = new ArrayList<>();
+		StringBuilder builder = new StringBuilder();
+		String st = "", name= input.nextLine().substring(1).split(" ")[0], start = ">"; 
+		while(input.hasNext()){
+			st = input.nextLine();
+			if(st.startsWith(start)){
+				l.add(new Organism(name, builder.toString()));
+				builder = new StringBuilder();
+				name = st.substring(1).split(" ")[0];
+			}else{
+				builder.append(st);
 			}
-			l.add(new Organism(name, builder.toString()));
-			Organism[] o = new Organism[l.size()];
-			return l.toArray(o);
 		}
+		l.add(new Organism(name, builder.toString()));
+		Organism[] o = new Organism[l.size()];
+		return l.toArray(o);
+		
 	}
 
-	private String[] sequenceAlignment(){
+	private void print(){
 		for(int i = 0; i < organisms.length; i++){
 			for(int j = i + 1; j < organisms.length; j++){
-				System.out.println(organisms[i].getName() +" -----" + organisms[j].getName());
-				System.out.println(sequence_Alignment(organisms[i].getGenome(), organisms[j].getGenome(),
-								this.indexMap, this.penalties, this.delta)[0]);
+				sequence_Alignment(organisms[i], organisms[j],
+							this.indexMap, this.penalties, this.delta);
 			}
 		}
-		return null;						
 	}
-	private static String[] sequence_Alignment(String x, String y, 
+	private static void sequence_Alignment(Organism ox, Organism oy, 
 					Map<Character, Integer> map, int[][] penalties, int delta){
+		String x = ox.getGenome(), y = oy.getGenome();
+		if(x.length() > y.length()){
+			String temp = x;
+			x = y;
+			y = temp;
+			Organism tempO = ox;
+			ox = oy;
+			oy = tempO;
+		}
+		
 		final char[] arrX = x.toCharArray(), arrY = y.toCharArray();
 		final int lx = arrX.length, ly = arrY.length;
 		final int[][] cost = new int[lx + 1][ly + 1];	
-		for(int i =0; i < lx; i++){ cost[i][0] = delta * i;}
-		for(int j =0; j < ly; j++){ cost[0][j] = delta * j;}
+		int[] al = new int[lx];
+		for(int i =0; i <= lx; i++){ cost[i][0] = delta * i;}
+		for(int j =0; j <= ly; j++){ cost[0][j] = delta * j;}
+		char chx = ' ', chy = ' ';
 		for(int i = 1; i <= lx; i++){
-			int idxX = map.get(arrX[i-1]); 
+			chx = arrX[i-1];
+			int idxX = map.get(chx); 
+			int positionX = i - 1;
+			int positionY;
 			for(int j = 1; j <= ly; j++){
-				int idxY = map.get(arrY[j - 1]);
-				cost[i][j] = Math.max(
-								Math.max((penalties[idxX][idxY] + cost[i-1][j-1]), (delta + cost[i][j - 1])),
-								(delta + cost[i - 1][j]));
+				chy = arrY[j - 1];
+				positionY = j - 1;
+				int idxY = map.get(chy);
+				if(((penalties[idxX][idxY] + cost[i-1][j-1]) > (delta + cost[i][j-1])) &&
+					(((penalties[idxX][idxY] + cost[i - 1][j -1]) > delta + cost[i - 1][j])
+					)){
+						cost[i][j] = penalties[idxX][idxY] + cost[i-1][j-1];
+						al[positionX] = positionY;
+
+					}else if((delta + cost[i][j-1]) > (delta + cost[i-1][j])) {
+						cost[i][j] = delta + cost[i][j-1];
+					}else {
+						cost[i][j] = delta + cost[i-1][j] ;
+					}
 			}
+			
 		}
-		return new String[]{String.valueOf(cost[lx][ly])};
+		
+		System.out.println(ox.getName() +"--"+ oy.getName()+": "+ cost[lx][ly]);
+		printer(al, arrX, arrY);
 	}
 
+	private static void printer(int[] al, char[] arrX, char[] arrY){
+		StringBuilder sb = new StringBuilder(arrY.length);
+		char[] ch = new char[arrY.length];
+		for(int i = 0; i < arrY.length; i++)
+			ch[i] = '-';
+		for(int i = 0; i < al.length; i++){
+			ch[al[i]] = arrX[i];
+		}
+		String align = String.copyValueOf(ch);
+		System.out.println(align);
+		System.out.println(String.copyValueOf(arrY));
+	}
 	private static int[][] createBlosum(Map<Character, Integer> indexMap) throws IOException{
 		try(BufferedReader br = new BufferedReader(new FileReader("../data/BLOSUM62.txt"))){
 			String comments, diesi = "#";
@@ -113,7 +151,6 @@ public class SequenceAlignment{
 				}
 				row++;
 			}
-			
 			return penalties;
 		}
 	}
