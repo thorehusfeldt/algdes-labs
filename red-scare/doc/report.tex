@@ -1,0 +1,60 @@
+\documentclass{tufte-handout}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+
+\usepackage{color}
+\newcommand{\red}[1]{{\color{red} #1}}
+\usepackage{booktabs}
+\begin{document}
+\section{Red Scare! Report}
+
+by Alice Cooper.
+
+\subsection{Results}
+
+The following table gives my results for all graphs of at least 500 vertices.
+
+\medskip
+\begin{tabular}{lrrrrrr}
+  \toprule
+  Instance name & $n$ & A & F & M & N & S \\
+  \midrule
+  rusty-5762 & 5,762 & true & 16 & -- & ? & 5 \\
+  wall-p-10000 & 10,000 &\\	
+  $\vdots$\\
+  \bottomrule
+\end{tabular}
+\medskip
+
+The columns are for the problems Alternate, Few, Many, None, and Some.
+The table entries either give the answer, or contain `?' for those cases where I was unable to find a solution within reasonable time.
+For those questions where there is a reason for my inability to find a good algorithm (because the problem is hard), I wrote `?!'.
+
+For the complete table of all results, see the tab-separted text file {\tt results.txt}.
+
+\subsection{Methods}
+
+For problem A, I solved each instance $G$ by $\cdots$\footnote{Describe what you did.
+  Use words like ``building a inverse anti-tree without self-loops where each vertex in $G$ is presented by a Strogatz--Wasserman shtump.
+  I then performed a standard longest hash sorting using the algorithm of Bronf (Algorithm 5 in [1]).''
+  Be neat, brief, and precise.}
+The running time of this algorithm is $\cdot$, and my implementation spends $\cdots$ seconds on the instance $\cdots$ with  $n=\cdots$.
+
+I solved problem $\cdots$ for all $\cdots$\footnote{For instance, “planar, bipartite”} graphs using $\cdots$.
+
+I was unable to solve problem $\cdots$ except for the $\cdots$ instances.
+This is because, in generality, this problem is $\cdots$. 
+To see this, consider the following reduction from $\cdots$.
+Let $\ldots$ 
+
+I was also unable to solve $\cdots$ for $\cdots$, but I don’t know why.\footnote{Remove or expand as necessary.}
+
+\subsection{References}
+\begin{description}
+  \item[1.] \emph{APLgraphlib---A library for Basic Graph Algorithms in APL}, version 2.11, 2016, Iverson Project, {\tt github.com/iverson/APLgraphlib}.\sidenote{If you use references to code, books, or papers, be professional about it. Use whatever style you want, but be consistent.}
+
+  \item[2.] A. Lovelace, \emph{Algorithms and Data Structures in Pascal}, Addison--Wesley 1881. 
+\end{description}
+
+\end{document}

@@ -1,0 +1,63 @@
+50 11 22
+start ender
+awash *
+purls *
+petit *
+socks
+crook
+slain
+cooed
+rally
+slots
+titer *
+smite
+lemon
+faddy *
+brags
+stamp
+bonks *
+ender *
+brook
+umbra
+dicot *
+start
+libra *
+blaze
+verso *
+newly
+leaky
+showy
+badly
+darns
+razor
+cuber *
+algin *
+kopek *
+moods
+usual
+typal *
+rials *
+weave
+rinds
+pairs
+gusty
+gimps *
+curve
+heres
+fuzes *
+groks *
+wowee *
+redux *
+quads *
+coots *
+socks -- bonks
+crook -- brook
+slain -- algin
+cooed -- coots
+rally -- badly
+slots -- coots
+faddy -- badly
+stamp -- start
+umbra -- libra
+moods -- coots
+rials -- rinds

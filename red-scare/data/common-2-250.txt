@@ -1,0 +1,608 @@
+250 356 113
+start ender
+ovule
+salvo *
+corps
+ender *
+topos *
+sizes
+cheap
+merit
+metes
+churl *
+bring
+moxie *
+cease
+soggy
+ethic *
+smite
+eider
+raver *
+yummy *
+buddy
+anvil
+kirks *
+bonks *
+brook
+waled *
+handy
+bongs
+libra *
+blaze
+tamer
+roved
+verso *
+fjord
+gents *
+match
+petri *
+wooed
+hadst *
+liras *
+meany
+epsom *
+mourn
+moods
+tuans *
+amply *
+goony *
+poset *
+sited *
+yanks
+crock
+joked
+coots *
+beady *
+beget *
+fonts *
+deify *
+drake
+nudge
+wordy
+jokes
+cuspy *
+algal *
+small
+fixed
+execs *
+awash *
+pewit *
+droid *
+godly
+cabby *
+maims
+crook
+hazed *
+resin
+event
+creep
+pawns
+brags
+magus *
+freer
+lefts
+redip *
+coxed *
+older
+kapok *
+loins
+showy
+newly
+nudes *
+nuder *
+quads *
+rosin *
+garde *
+given
+algin *
+carob *
+spier *
+pulpy
+sneer
+putts
+spark
+super
+typal *
+sprat *
+mucky *
+rinds
+cuber *
+poles
+conch
+klugy *
+route
+nabla *
+timer *
+popes
+sprog *
+waded
+groks *
+wowee *
+gusty
+whole
+casus *
+coper *
+thats *
+bongo *
+tough
+lavas
+sweet
+denim
+pyres
+waged
+socks
+exact
+immix *
+slain
+belts
+gooey
+khans *
+cooed
+pulls
+slots
+scops *
+isles
+trays
+razor
+guess
+faddy *
+carer *
+facet
+stamp
+crone
+serfs
+hawks
+wines
+fight
+dicot *
+paint
+redox *
+stoat *
+leaky
+wonky *
+start
+board
+weeny *
+saris
+darns
+poufs *
+boozy *
+pairs
+fuzes *
+lunge
+mires
+kyrie *
+brick
+rials *
+polly *
+anted *
+tooth
+mussy *
+plain
+coati *
+twain
+purge
+tummy *
+whops *
+aurae *
+stalk
+limbo *
+learn
+those
+chugs
+ombre *
+fames *
+vroom *
+looms
+purls *
+longs
+petit *
+geeks *
+share
+mates
+livre *
+stash *
+chasm
+rally
+cornu *
+titer *
+hyena
+coder *
+horde
+lemon
+wetly *
+umbra
+brack *
+polis *
+tyros *
+eight
+brand
+canna *
+badly
+gravy
+males
+joist
+gross
+soled
+await
+decor *
+flows
+kopek *
+pupae
+sedan
+mulls
+rimed *
+weave
+boons *
+lined
+waist
+morns
+gimps *
+macro *
+curve
+pokes
+hocks *
+budge
+heres
+ascot *
+oaten *
+redux *
+frizz *
+obits *
+usual
+corps -- cornu
+corps -- morns
+corps -- coots
+ender -- sneer
+ender -- coder
+ender -- older
+ender -- eider
+ender -- nuder
+topos -- popes
+topos -- tyros
+sizes -- mires
+sizes -- sited
+sizes -- fuzes
+sizes -- wines
+cheap -- creep
+merit -- petit
+merit -- pewit
+merit -- timer
+metes -- heres
+metes -- mires
+metes -- males
+metes -- mates
+churl -- chugs
+bring -- brand
+bring -- brick
+cease -- chasm
+cease -- weave
+eider -- coder
+eider -- older
+eider -- timer
+eider -- titer
+eider -- nuder
+raver -- razor
+raver -- tamer
+raver -- carer
+raver -- roved
+yummy -- tummy
+buddy -- beady
+buddy -- badly
+buddy -- faddy
+buddy -- budge
+kirks -- mires
+kirks -- liras
+bonks -- boons
+bonks -- bongo
+bonks -- yanks
+bonks -- longs
+bonks -- fonts
+bonks -- wonky
+bonks -- socks
+bonks -- hocks
+bonks -- bongs
+brook -- crook
+brook -- brack
+brook -- brick
+brook -- crock
+brook -- vroom
+waled -- wooed
+waled -- males
+waled -- soled
+waled -- waged
+waled -- hazed
+waled -- waded
+handy -- faddy
+bongs -- boons
+bongs -- bongo
+bongs -- brags
+bongs -- longs
+bongs -- fonts
+libra -- livre
+libra -- umbra
+tamer -- titer
+tamer -- carer
+tamer -- timer
+tamer -- fames
+roved -- wooed
+roved -- joked
+roved -- soled
+roved -- coxed
+roved -- cooed
+roved -- rimed
+gents -- geeks
+gents -- fonts
+gents -- lefts
+gents -- belts
+match -- mates
+petri -- petit
+wooed -- joked
+wooed -- soled
+wooed -- waged
+wooed -- coxed
+wooed -- gooey
+wooed -- waded
+wooed -- cooed
+wooed -- wowee
+hadst -- waist
+liras -- lavas
+liras -- rials
+liras -- mires
+meany -- beady
+meany -- leaky
+meany -- weeny
+moods -- boons
+moods -- looms
+moods -- morns
+moods -- coots
+tuans -- quads
+tuans -- trays
+tuans -- khans
+tuans -- thats
+goony -- boons
+goony -- godly
+goony -- boozy
+goony -- gooey
+poset -- popes
+poset -- pokes
+poset -- poles
+sited -- lined
+sited -- soled
+sited -- titer
+sited -- anted
+sited -- fixed
+sited -- rimed
+yanks -- hawks
+crock -- crone
+crock -- crook
+crock -- brack
+crock -- brick
+joked -- soled
+joked -- coxed
+joked -- jokes
+joked -- pokes
+joked -- cooed
+coots -- boons
+coots -- looms
+coots -- fonts
+coots -- coati
+coots -- tooth
+coots -- cooed
+coots -- slots
+beady -- leaky
+fonts -- longs
+nudge -- budge
+nudge -- purge
+nudge -- nudes
+nudge -- lunge
+nudge -- nuder
+wordy -- horde
+wordy -- wonky
+jokes -- popes
+jokes -- pokes
+jokes -- poles
+cuspy -- mussy
+cuspy -- gusty
+cuspy -- pulpy
+algal -- algin
+small -- stalk
+fixed -- coxed
+fixed -- lined
+fixed -- rimed
+execs -- exact
+awash -- await
+awash -- stash
+pewit -- petit
+godly -- badly
+godly -- gooey
+godly -- polly
+maims -- magus
+maims -- pairs
+maims -- males
+maims -- mates
+crook -- crone
+crook -- vroom
+hazed -- waded
+hazed -- waged
+resin -- rosin
+resin -- redip
+creep -- freer
+pawns -- paint
+pawns -- pairs
+pawns -- hawks
+pawns -- darns
+brags -- brack
+brags -- brand
+brags -- trays
+magus -- males
+magus -- mates
+magus -- casus
+freer -- sneer
+lefts -- belts
+redip -- redux
+redip -- redox
+coxed -- coder
+coxed -- soled
+coxed -- cooed
+coxed -- coper
+older -- nuder
+older -- coder
+kapok -- kopek
+loins -- boons
+loins -- longs
+loins -- looms
+loins -- morns
+newly -- wetly
+nudes -- nuder
+nudes -- fuzes
+nuder -- super
+nuder -- cuber
+nuder -- coder
+garde -- horde
+algin -- plain
+algin -- slain
+carob -- carer
+spier -- sneer
+spier -- super
+pulpy -- polly
+pulpy -- pulls
+sneer -- sweet
+sneer -- super
+putts -- pulls
+putts -- purls
+spark -- start
+spark -- share
+spark -- stalk
+super -- coper
+super -- cuber
+sprat -- stoat
+sprat -- sprog
+mucky -- mussy
+rinds -- rials
+rinds -- wines
+cuber -- coper
+cuber -- coder
+cuber -- carer
+poles -- polly
+poles -- pokes
+poles -- poufs
+poles -- males
+poles -- pyres
+poles -- soled
+poles -- popes
+poles -- polis
+poles -- pulls
+poles -- isles
+timer -- rimed
+timer -- titer
+popes -- pokes
+popes -- poufs
+popes -- pyres
+popes -- kopek
+popes -- polis
+popes -- coper
+waded -- waged
+groks -- gross
+groks -- geeks
+gusty -- mussy
+whole -- whops
+whole -- those
+coper -- carer
+coper -- coder
+coper -- kopek
+coper -- cooed
+thats -- trays
+thats -- khans
+bongo -- longs
+tough -- tooth
+pyres -- pokes
+pyres -- purls
+pyres -- heres
+pyres -- mires
+pyres -- tyros
+socks -- hocks
+slain -- twain
+slain -- plain
+gooey -- boozy
+gooey -- cooed
+cooed -- coder
+cooed -- soled
+pulls -- polly
+pulls -- purls
+pulls -- mulls
+pulls -- polis
+slots -- scops
+slots -- flows
+scops -- whops
+isles -- males
+guess -- gross
+guess -- geeks
+faddy -- badly
+carer -- coder
+facet -- fames
+stamp -- start
+stamp -- stalk
+stamp -- stash
+serfs -- heres
+serfs -- saris
+hawks -- hocks
+wines -- lined
+wines -- mires
+fight -- eight
+dicot -- decor
+dicot -- ascot
+paint -- pairs
+paint -- waist
+redox -- redux
+stoat -- start
+leaky -- learn
+start -- share
+start -- stash
+start -- stalk
+board -- brand
+weeny -- wetly
+saris -- darns
+darns -- morns
+poufs -- polis
+poufs -- pokes
+boozy -- boons
+fuzes -- fames
+lunge -- purge
+lunge -- budge
+lunge -- longs
+mires -- males
+mires -- morns
+mires -- heres
+mires -- mates
+brick -- brack
+polly -- polis
+polly -- rally
+plain -- twain
+twain -- await
+purge -- budge
+purge -- purls
+purge -- curve
+purge -- aurae
+purge -- pupae
+aurae -- curve
+aurae -- pupae
+stalk -- stash
+learn -- lemon
+ombre -- umbra
+fames -- males
+fames -- mates
+looms -- boons
+looms -- longs
+purls -- mulls
+mates -- males
+mates -- oaten
+rally -- badly
+cornu -- morns
+coder -- decor
+brack -- brand
+polis -- pokes
+males -- mulls
+joist -- waist
+rimed -- lined
+boons -- morns

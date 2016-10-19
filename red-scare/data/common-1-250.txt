@@ -1,0 +1,291 @@
+250 39 113
+start ender
+ovule
+salvo *
+corps
+ender *
+topos *
+sizes
+cheap
+merit
+metes
+churl *
+bring
+moxie *
+cease
+soggy
+ethic *
+smite
+eider
+raver *
+yummy *
+buddy
+anvil
+kirks *
+bonks *
+brook
+waled *
+handy
+bongs
+libra *
+blaze
+tamer
+roved
+verso *
+fjord
+gents *
+match
+petri *
+wooed
+hadst *
+liras *
+meany
+epsom *
+mourn
+moods
+tuans *
+amply *
+goony *
+poset *
+sited *
+yanks
+crock
+joked
+coots *
+beady *
+beget *
+fonts *
+deify *
+drake
+nudge
+wordy
+jokes
+cuspy *
+algal *
+small
+fixed
+execs *
+awash *
+pewit *
+droid *
+godly
+cabby *
+maims
+crook
+hazed *
+resin
+event
+creep
+pawns
+brags
+magus *
+freer
+lefts
+redip *
+coxed *
+older
+kapok *
+loins
+showy
+newly
+nudes *
+nuder *
+quads *
+rosin *
+garde *
+given
+algin *
+carob *
+spier *
+pulpy
+sneer
+putts
+spark
+super
+typal *
+sprat *
+mucky *
+rinds
+cuber *
+poles
+conch
+klugy *
+route
+nabla *
+timer *
+popes
+sprog *
+waded
+groks *
+wowee *
+gusty
+whole
+casus *
+coper *
+thats *
+bongo *
+tough
+lavas
+sweet
+denim
+pyres
+waged
+socks
+exact
+immix *
+slain
+belts
+gooey
+khans *
+cooed
+pulls
+slots
+scops *
+isles
+trays
+razor
+guess
+faddy *
+carer *
+facet
+stamp
+crone
+serfs
+hawks
+wines
+fight
+dicot *
+paint
+redox *
+stoat *
+leaky
+wonky *
+start
+board
+weeny *
+saris
+darns
+poufs *
+boozy *
+pairs
+fuzes *
+lunge
+mires
+kyrie *
+brick
+rials *
+polly *
+anted *
+tooth
+mussy *
+plain
+coati *
+twain
+purge
+tummy *
+whops *
+aurae *
+stalk
+limbo *
+learn
+those
+chugs
+ombre *
+fames *
+vroom *
+looms
+purls *
+longs
+petit *
+geeks *
+share
+mates
+livre *
+stash *
+chasm
+rally
+cornu *
+titer *
+hyena
+coder *
+horde
+lemon
+wetly *
+umbra
+brack *
+polis *
+tyros *
+eight
+brand
+canna *
+badly
+gravy
+males
+joist
+gross
+soled
+await
+decor *
+flows
+kopek *
+pupae
+sedan
+mulls
+rimed *
+weave
+boons *
+lined
+waist
+morns
+gimps *
+macro *
+curve
+pokes
+hocks *
+budge
+heres
+ascot *
+oaten *
+redux *
+frizz *
+obits *
+usual
+ender -- eider
+merit -- timer
+metes -- mates
+yummy -- tummy
+bonks -- bongs
+brook -- crook
+waled -- waged
+waled -- waded
+bongs -- longs
+bongs -- bongo
+tamer -- timer
+wooed -- cooed
+liras -- rials
+goony -- gooey
+crock -- crook
+joked -- jokes
+nudge -- budge
+jokes -- pokes
+pewit -- petit
+resin -- rosin
+coxed -- cooed
+nudes -- nuder
+poles -- popes
+poles -- polis
+poles -- pokes
+timer -- titer
+popes -- pokes
+waded -- waged
+groks -- gross
+coper -- coder
+socks -- hocks
+slain -- plain
+pulls -- mulls
+pulls -- purls
+fight -- eight
+redox -- redux
+brick -- brack
+mates -- males
+coder -- decor

@@ -1,0 +1,40 @@
+17 21 1
+begin ender
+rungs
+sings
+begin
+rents
+ender
+rests
+binge
+singe
+rings
+rusty *
+rente
+runts
+enter
+rusts
+tinge
+tings
+runty
+rungs -- rings
+rungs -- runts
+sings -- tings
+sings -- rings
+sings -- singe
+begin -- binge
+rents -- rests
+rents -- rente
+rents -- runts
+ender -- enter
+rests -- rusts
+binge -- tinge
+binge -- singe
+singe -- tinge
+rings -- tings
+rusty -- rusts
+rusty -- runty
+rente -- enter
+runts -- rusts
+runts -- runty
+tinge -- tings

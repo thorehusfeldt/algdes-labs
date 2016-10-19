@@ -1,0 +1,165 @@
+100 63 47
+start ender
+ovule
+ender *
+topos *
+merit
+metes
+cease
+ethic *
+smite
+yummy *
+bonks *
+brook
+waled *
+libra *
+blaze
+tamer
+verso *
+wooed
+hadst *
+liras *
+moods
+amply *
+goony *
+sited *
+crock
+joked
+coots *
+beady *
+fonts *
+awash *
+crook
+brags
+magus *
+redip *
+older
+loins
+showy
+newly
+nudes *
+nuder *
+quads *
+algin *
+carob *
+pulpy
+sneer
+spark
+typal *
+rinds
+cuber *
+conch
+route
+waded
+groks *
+wowee *
+gusty
+whole
+lavas
+waged
+socks
+slain
+cooed
+slots
+razor
+faddy *
+start
+stamp
+serfs
+fight
+dicot *
+paint
+leaky
+darns
+pairs
+fuzes *
+mires
+rials *
+polly *
+mussy *
+coati *
+purge
+vroom *
+purls *
+petit *
+rally
+titer *
+lemon
+wetly *
+umbra
+brack *
+polis *
+badly
+kopek *
+weave
+waist
+gimps *
+curve
+heres
+ascot *
+oaten *
+redux *
+usual
+ender -- sneer
+ender -- nuder
+ender -- older
+merit -- petit
+metes -- heres
+metes -- mires
+cease -- weave
+bonks -- fonts
+bonks -- socks
+brook -- crook
+brook -- brack
+brook -- crock
+brook -- vroom
+waled -- wooed
+waled -- waged
+waled -- waded
+libra -- umbra
+tamer -- titer
+wooed -- joked
+wooed -- waged
+wooed -- waded
+wooed -- cooed
+wooed -- wowee
+hadst -- waist
+liras -- lavas
+liras -- mires
+liras -- rials
+moods -- coots
+sited -- titer
+crock -- crook
+crock -- brack
+joked -- cooed
+coots -- slots
+coots -- fonts
+coots -- coati
+coots -- cooed
+beady -- leaky
+crook -- vroom
+brags -- brack
+redip -- redux
+older -- nuder
+newly -- wetly
+nudes -- nuder
+nudes -- fuzes
+nuder -- cuber
+algin -- slain
+pulpy -- polly
+spark -- start
+rinds -- rials
+waded -- waged
+gusty -- mussy
+faddy -- badly
+start -- stamp
+serfs -- heres
+dicot -- ascot
+paint -- pairs
+paint -- waist
+mires -- heres
+polly -- polis
+polly -- rally
+purge -- curve
+purge -- purls
+rally -- badly

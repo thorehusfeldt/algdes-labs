@@ -1,0 +1,11 @@
+Welcome to METAGRAPH, a small set of macros that help in drawing
+(un)directed graphs with METAPOST and the boxes package. Please have a look
+at the included plain TeX manual: to compile it, however, you must first
+run the examples.mp source file through METAPOST.
+
+To use METAGRAPH, just put metagraph.mp somewhere in your path and input it
+in your source file.
+
+Comments are welcome.
+
+					seba (vigna@acm.org)
