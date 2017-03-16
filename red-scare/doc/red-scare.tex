@@ -53,7 +53,7 @@ The problems we want solved for each graph are the following:
   \item[None] Return the length of a shortest $s,t$-path internally avoiding $R$.
     To be precise, let $P$ be the set of $s,t$-paths using no vertices from $R$ except maybe $s$ and $t$ themselves. Let $l(p)$ denote the length of a path $p$.
     Return $\min\{\,l(p)\colon p\in P\,\}$.
-    If no such path exists, return `--.'
+    If no such path exists, return `-1'.
     Note that if the edge $st$ exists then the answer is 1, no matter the colour of $s$ or $t$.
     In $G_{\text{ex}}$, the answer is 3 (because of the path 0, 1, 2, 3.)
   \item[Some] Return `true' if there is a path from $s$ to $t$ that includes at least one vertex from $R$.
@@ -62,12 +62,12 @@ The problems we want solved for each graph are the following:
   \item [Many] Return the maximum number of red vertices on any path from $s$ to $t$.
     To be precise, let $P$ be the set of $s,t$-paths and let $r(p)$ denote the number of red vertices  on a path $p$.
     Return $\max\{\,r(p)\colon p\in P\,\}$.
-    If no path from $s$ to $t$ exists, return `--.'
+    If no path from $s$ to $t$ exists, return `-1'.
     In $G_{\text{ex}}$, the answer is `2' (because of the path 0, 5, 6, 7, 3.)
   \item [Few] Return the minimum number of red vertices on any path from $s$ to $t$.
     To be precise, let $P$ be the set of $s,t$-paths and let $r(p)$ denote the number of red vertices  on a path $p$.
     Return $\min\{\,r(p)\colon p\in P\,\}$.
-    If no path from $s$ to $t$ exists, return `--.'
+    If no path from $s$ to $t$ exists, return `-1'.
     In $G_{\text{ex}}$, the answer is 0 (because of the path 0, 1, 2, 3.)
   \item [Alternate] Return `true' if there is a path from $s$ to $t$ that alternates between red and non-red vertices.
     To be precise, a path $v_1,\ldots, v_l$ is \emph{alternating} if for each $i\in\{1,\ldots,l-1\}$, exactly one endpoint of the edge $v_iv_{i+1}$ is red.
