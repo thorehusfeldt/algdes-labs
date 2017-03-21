@@ -58,16 +58,20 @@ climb $\rightarrow$ blimp $\rightarrow$ limps $\rightarrow$ pismo $\rightarrow$ 
 \end{quotation}
 \end{fullwidth}
 
+\newpage
 \subsection{Requirements}
 
-You build a directed graph representing the adjacency structure of the words in the list called {\tt words-5757.txt}, and run BFS on it. 
-The input to your algorithm is two words, like {\tt climb} and {\tt hames}.
-Your algorithm returns the words on a shortest path from the first word to the second.
+For a given instance {\tt words-xxx} you build a directed graph representing the adjacency structure of the words in the file called {\tt words-xxx.txt}. 
 
-The data directory contains a number of test inputs with known distances, your algorithm must work correctly on those.\sidenote{There can be many shortest paths, so it makes no sense to specify the words on the path.}
+Then you are given a list of word pairs in {\tt words-xxx-in.txt}.\sidenote{A pair of words could be {\tt climb} and {\tt hames}, for example.}
 
-If you can, make the running time of your algorithm  $O(n+m)$, where $n$ and $m$ refer to the number of nodes and arcs in the underlying directed graph. 
-In particular, you’re not supposed to use quadratic time in $n$ to build the graph, even though it’s tempting.\sidenote{Of course, for dense graphs, $O(n+m)$ would be quadratic time anyway.
+For each pair of words you should output the length between these words, which should be computed with a BFS. The correct answers are specified in {\tt words-xxx-out.txt}.
+Your algorithm should be able to both return the length of the shortest path \emph{and} a specific such path. The given output only shows the lengths of the paths, but for the report you will need to find an explicit path.
+
+The data directory contains a number of test inputs with known distances, your algorithm must work correctly on all of those.
+
+The running time of the BFS-part of the algorithm needs to be in $O(n+m)$, where $n$ and $m$ refer to the number of nodes and arcs in the underlying directed graph.  
+Building the graph in quadratic time is accepted, but you should try to find a better solution.\sidenote{Of course, for dense graphs, $O(n+m)$ would be quadratic time anyway.
 But the input graph is not dense.}
 
 \subsection{Deliverables}
