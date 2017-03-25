@@ -59,4 +59,6 @@ About the Files
     sm-random-* | 5, 50, 500 | Random instances of various sizes
     sm-worst-*  | 5, 50, 500 | j Worst case instances of various sizes
 
+Testing
+--------
 You can run all tests one by one by editing the scriptExample.sh with your execution commands.
