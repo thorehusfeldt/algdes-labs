@@ -41,3 +41,5 @@ For instance, words-10-out.txt:
 
 tells you that there is a shortest path of lenght 1 from “other” to “their”.
 There is no path at all from “there” to “other”.
+
+You can run all your tests at once by editing the scriptExample.sh. It lists and sorts all files ending with -in.txt by size, then iterates through the files and runs your execution commands, in the example file it is a java command with the files as arguments and output piped to another file.This is followed by a diff command that compares your output with the expected output. 
