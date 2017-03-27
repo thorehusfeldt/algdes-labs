@@ -41,3 +41,6 @@ For instance, words-10-out.txt:
 
 tells you that there is a shortest path of lenght 1 from “other” to “their”.
 There is no path at all from “there” to “other”.
+
+
+To run through all test cases, you can edit the file scriptExample.sh by changing the execution command.
