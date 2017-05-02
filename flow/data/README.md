@@ -10,7 +10,7 @@ These names are not unique, so you can’t use them as keys.
 * one row containing the number of arcs *m*
 * *m* rows on the form
       u v c
-   where *u* and *v* are node indices (betwenn 0 and *n*–1), and *c* is a capacity. Capacity –1 means that the capacity on that edge is considered infinite (probably either because that part of the railway has really, really high capacity, or our spying attempts in that area were foiled by a beautiful Russian superspy of the opposite sex).
+   where *u* and *v* are node indices (between 0 and *n*–1), and *c* is a capacity. Capacity –1 means that the capacity on that edge is considered infinite (probably either because that part of the railway has really, really high capacity, or our spying attempts in that area were foiled by a beautiful Russian superspy of the opposite sex).
    Arcs are undirected.
 
 The file is created from Figure 7 in T.E. Harris, F.S. Ross, “Fundamentals of a Method for Evaluating Rail Net Capacities”, US Air Force Project RAND research memorandum RM–1573, October 24, 1955, declassified on 13 May 1999.
