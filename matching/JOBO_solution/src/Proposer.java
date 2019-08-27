@@ -15,6 +15,14 @@ public class Proposer implements MatchingObject {
         hasMatch = false;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public void addPreference(int[] ids) {
         for (int i = ids.length - 1; i >= 0; i--) {
             preferredReceivers.push(ids[i]);
@@ -23,6 +31,10 @@ public class Proposer implements MatchingObject {
 //        for (int i = 0; i < until; i++)
 //            System.out.println(preferredReceivers.pop());
 //        System.out.println("Stack is empty? " + preferredReceivers.isEmpty());
+    }
+
+    public int getNextPreferenceId() {
+        return preferredReceivers.pop();
     }
 
     public int getMatchId() {

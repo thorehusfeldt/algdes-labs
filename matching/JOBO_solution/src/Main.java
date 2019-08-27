@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Main {
 
@@ -72,7 +73,17 @@ public class Main {
             freeProposers = new HashSet<>(proposers.values());
 
           while (!freeProposers.isEmpty()) { // && !noPreferences) {
-
+              Iterator it = freeProposers.iterator();
+              while (it.hasNext()) {
+                  // Get Proposer object, find next preferred Receiver id, retrieve Receiver object, try matching
+                  Proposer currentProposer = (Proposer) it.next();
+                  int preferenceId = currentProposer.getNextPreferenceId();
+                  Receiver currentReceiver = receivers.get(preferenceId);
+                  if (!currentReceiver.hasMatch()) {
+                      // TODO implement tryMatch functionality and next steps (see pseudo code in book)
+                      (currentProposer, currentReceiver);
+                  }
+              }
           }
 
 

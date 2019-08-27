@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Receiver implements MatchingObject {
 
     private int id;
     private String name;
-    private List<Integer> preferredProposers;
+    private ArrayList<Integer> preferredProposers;
     private int matchId;
     private boolean hasMatch;
 
@@ -13,6 +12,14 @@ public class Receiver implements MatchingObject {
         this.id =id;
         this.name = name;
         preferredProposers = new ArrayList<>();
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void addPreference(int[] ids) {
@@ -29,7 +36,14 @@ public class Receiver implements MatchingObject {
         return hasMatch;
     }
 
+    public void tryMatch(int id) {
+        if (preferredProposers.indexOf(id) < matchId) {
+            setNewMatch(id);
+        }
+    }
+
     public void setNewMatch(int newMatchId) {
+        hasMatch = true;
         matchId = newMatchId;
     }
 }
