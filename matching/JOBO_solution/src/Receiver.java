@@ -5,45 +5,45 @@ public class Receiver implements MatchingObject {
     private int id;
     private String name;
     private ArrayList<Integer> preferredProposers;
-    private int matchId;
+    private Proposer currentMatch;
     private boolean hasMatch;
 
-    public Receiver(int id, String name) {
+    Receiver(int id, String name) {
         this.id =id;
         this.name = name;
         preferredProposers = new ArrayList<>();
+        currentMatch = null;
+        hasMatch = false;
     }
 
     public int getId() {
         return this.id;
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
     public void addPreference(int[] ids) {
-        for (int i = 0; i < ids.length; i++) {
-            preferredProposers.add(ids[i]);
+        for (int value : ids) {
+            preferredProposers.add(value);
         }
     }
 
-    public int getMatchId() {
-        return matchId;
+    Proposer getCurrentMatch() {
+        return currentMatch;
     }
 
-    public boolean hasMatch() {
-        return hasMatch;
+    boolean isFree() {
+        return !hasMatch;
     }
 
-    public void tryMatch(int id) {
-        if (preferredProposers.indexOf(id) < matchId) {
-            setNewMatch(id);
-        }
+    boolean tryMatch(int id) {
+        return preferredProposers.indexOf(id) < preferredProposers.indexOf(currentMatch.getId());
     }
 
-    public void setNewMatch(int newMatchId) {
+    void setNewMatch(Proposer newMatch) {
         hasMatch = true;
-        matchId = newMatchId;
+        currentMatch = newMatch;
     }
 }

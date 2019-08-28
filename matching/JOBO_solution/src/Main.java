@@ -1,25 +1,21 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
         try {
-            String tempPath = System.getProperty("user.dir") + "/src/sm-friends-in.txt";
+//            String tempPath = System.getProperty("user.dir") + "/src/sm-friends-in.txt";
+            String tempPath = "/Users/joakim/Development/itu/algorithm-design/algdes-labs/matching/data/sm-bbt-in.txt";
             File file = new File(tempPath);
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
-//            int lineCount = 0;
 
             HashMap<Integer, Proposer> proposers = new HashMap<>();
-            HashSet<Proposer> freeProposers;
             HashMap<Integer, Receiver> receivers = new HashMap<>();
-//            ArrayList<MatchingObject> matchingObjects = new ArrayList<>();
 
             int totalPairs = -1;
 
@@ -27,14 +23,11 @@ public class Main {
 
             // PARSING THE INPUT:
             while ((st = br.readLine()) != null) {
-//                lineCount++;
-//                System.out.println("line: " + lineCount);
                 if (st.startsWith("#")) {
                     continue;
                 }
                 if (totalPairs == -1 && st.startsWith("n=")) {
                     totalPairs = Integer.parseInt(st.split("=")[1]);
-                    // System.out.println("n = " + totalPairs);
                     continue;
                 }
                 if (st.isEmpty()) {
@@ -49,19 +42,12 @@ public class Main {
                     } else {
                         receivers.put(index, new Receiver(index, name));
                     }
-//                    if (index % 2 == 1) {
-//                        matchingObjects.add(new Proposer(index, name));
-//                    }
-//                    else {
-//                        matchingObjects.add(new Receiver(index, name));
-//                    }
                 } else {
                     index = Integer.parseInt(lineParts[0].split(":")[0]);
                     int[] preferenceIds = new int[lineParts.length - 1];
                     for (int i = 1; i < lineParts.length; i++) {
                         preferenceIds[i - 1] = Integer.parseInt(lineParts[i]);
                     }
-//                    matchingObjects.get(index - 1).addPreference(preferenceIds);
                     if (index % 2 == 1) {
                         proposers.get(index).addPreference(preferenceIds);
                     } else {
@@ -70,28 +56,51 @@ public class Main {
                 }
             }
 
-            freeProposers = new HashSet<>(proposers.values());
+            HashMap<Proposer, Receiver> result = galeShapley(proposers.values(), receivers);
 
-          while (!freeProposers.isEmpty()) { // && !noPreferences) {
-              Iterator it = freeProposers.iterator();
-              while (it.hasNext()) {
-                  // Get Proposer object, find next preferred Receiver id, retrieve Receiver object, try matching
-                  Proposer currentProposer = (Proposer) it.next();
-                  int preferenceId = currentProposer.getNextPreferenceId();
-                  Receiver currentReceiver = receivers.get(preferenceId);
-                  if (!currentReceiver.hasMatch()) {
-                      // TODO implement tryMatch functionality and next steps (see pseudo code in book)
-                      (currentProposer, currentReceiver);
-                  }
-              }
-          }
-
-
-
-
+            for (Proposer p : proposers.values()) {
+                Receiver r = result.get(p);
+                System.out.println("" + p.getName() + " -- " + r.getName());
+            }
 
         } catch(Exception ex) {
             System.out.println(ex);
         }
+    }
+
+    private static HashMap<Proposer, Receiver> galeShapley(Collection<Proposer> proposers, HashMap<Integer, Receiver> receivers) {
+
+        LinkedList<Proposer> proposersList = new LinkedList<>(proposers);
+        HashMap<Proposer, Receiver> matches = new HashMap<>();
+
+        while (!proposersList.isEmpty()) {
+            for (Proposer p : proposersList) {
+                int receiverId = p.getNextPreferenceId();
+                if (receiverId == -1) {
+                    matches.put(p, null);
+                    proposersList.remove(p);
+                    continue;
+                }
+                Receiver r = receivers.get(receiverId);
+                if (r.isFree()) {
+                    p.setNewMatch(r);
+                    r.setNewMatch(p);
+                    matches.put(p, r);
+                    proposersList.remove(p);
+                    break;
+                } else {
+                    if (r.tryMatch(p.getId())) {
+                        matches.remove(r.getCurrentMatch());
+                        proposersList.add(r.getCurrentMatch());
+                        p.setNewMatch(r);
+                        r.setNewMatch(p);
+                        matches.put(p, r);
+                        proposersList.remove(p);
+                        break;
+                    }
+                }
+            }
+        }
+        return matches;
     }
 }

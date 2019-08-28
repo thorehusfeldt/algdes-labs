@@ -4,22 +4,22 @@ public class Proposer implements MatchingObject {
     private int id;
     private String name;
     private Stack<Integer> preferredReceivers;
-    private int matchId;
+    private Receiver currentMatch;
     private boolean hasMatch;
 
-    public Proposer(int id, String name) {
+    Proposer(int id, String name) {
         this.id = id;
         this.name = name;
         preferredReceivers = new Stack<>();
-        matchId = -1;
+        currentMatch = null;
         hasMatch = false;
     }
 
-    public int getId() {
+    int getId() {
         return this.id;
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
@@ -33,25 +33,18 @@ public class Proposer implements MatchingObject {
 //        System.out.println("Stack is empty? " + preferredReceivers.isEmpty());
     }
 
-    public int getNextPreferenceId() {
-        return preferredReceivers.pop();
+    int getNextPreferenceId() {
+        if (preferredReceivers.isEmpty()) {
+            return -1;
+        }
+        else {
+            return preferredReceivers.pop();
+        }
     }
 
-    public int getMatchId() {
-        return matchId;
-    }
-
-    public boolean hasMatch() {
-        return hasMatch;
-    }
-
-    public void setNewMatch(int newMatchId) {
-        matchId = newMatchId;
+    void setNewMatch(Receiver newMatch) {
+        currentMatch = newMatch;
         hasMatch = true;
     }
 
-    public void removeMatch() {
-        matchId = -1;
-        hasMatch = false;
-    }
 }
