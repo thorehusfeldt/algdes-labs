@@ -1,0 +1,20 @@
+# Stable marriage instance based on CBS's show "The Big Bang Theory"
+#
+n=4
+1 Sheldon
+2 Amy
+3 Rajesh
+4 Penny
+5 Howard
+6 Bernadette
+7 Leonard
+8 Priya
+
+1: 2 4 6 8
+2: 1 7 5 3
+3: 6 4 2 8 
+4: 7 3 1 5
+5: 6 4 8 2
+6: 5 3 7 1
+7: 4 8 6 2
+8: 7 5 1 3

@@ -1,0 +1,16 @@
+# Stable marriage instance based on NBC's show "Friends"
+#
+n=3
+1 Ross
+2 Monica
+3 Chandler
+4 Phoebe
+5 Joey
+6 Rachel
+
+1: 6 4 2
+2: 3 5 1
+3: 2 6 4
+4: 5 1 3
+5: 6 4 2
+6: 1 5 3
