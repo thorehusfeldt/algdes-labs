@@ -12,10 +12,6 @@ public class Receiver implements MatchingObject {
         preferredProposers = new ArrayList<>();
     }
 
-    public int getId() {
-        return this.id;
-    }
-
     String getName() {
         return this.name;
     }

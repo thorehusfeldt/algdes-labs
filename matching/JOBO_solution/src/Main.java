@@ -8,8 +8,6 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            // String tempPath = System.getProperty("user.dir") + "/src/sm-friends-in.txt";
-            // String tempPath = "/Users/joakim/Development/itu/algorithm-design/algdes-labs/matching/data/sm-bbt-in.txt";
             String tempPath = args[0];
             File file = new File(tempPath);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -18,20 +16,11 @@ public class Main {
             HashMap<Integer, Proposer> proposers = new HashMap<>();
             HashMap<Integer, Receiver> receivers = new HashMap<>();
 
-            int totalPairs = -1;
-
             int index = -1;
 
             // PARSING THE INPUT:
             while ((st = br.readLine()) != null) {
-                if (st.startsWith("#")) {
-                    continue;
-                }
-                if (totalPairs == -1 && st.startsWith("n=")) {
-                    totalPairs = Integer.parseInt(st.split("=")[1]);
-                    continue;
-                }
-                if (st.isEmpty()) {
+                if (st.startsWith("#") || st.startsWith("n=") || st.isEmpty()) {
                     continue;
                 }
                 String[] lineParts = st.split(" ");
@@ -69,7 +58,6 @@ public class Main {
     }
 
     private static HashMap<Receiver, Proposer> galeShapley(Collection<Proposer> proposers, HashMap<Integer, Receiver> receivers) {
-
         Stack<Proposer> availableProposers = new Stack();
         // Fill available proposers stack with every proposer at start
         for(Proposer p : proposers) {
@@ -83,26 +71,20 @@ public class Main {
                 int receiverId = p.getNextPreferenceId();
                 if (receiverId == -1) {
                     matches.put(null, p);
-                    // availableProposers.remove(p);
                     continue;
                 }
                 Receiver r = receivers.get(receiverId);
                 // Does r already have a match?
                 if (matches.get(r) == null) {
                     matches.put(r, p);
-                    // availableProposers.remove(p);
-                    // break;
                 } else {
                     Proposer currentlyMatchedProposer = matches.get(r);
                     // Does r prefer p to the currently matched proposer?
                     if (r.tryMatch(p.getId(), currentlyMatchedProposer.getId())) {
-                        // Remove the match that receiver r is currently involved in
-                        // matches.remove(r);
                         // Add the (now available) proposer back to the stack of available proposers
                         availableProposers.push(currentlyMatchedProposer);
                         // Add the match to list of matches - previous pair is overwritten
                         matches.put(r, p);
-                        // break;
                     } else {
                         // Nothing happened, re-add proposer as available
                         availableProposers.push(p);
