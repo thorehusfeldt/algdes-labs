@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Receiver implements MatchingObject {
 
     private int id;
     private String name;
-    private ArrayList<Integer> preferredProposers;
+    private HashMap<Integer,Integer> proposerPreferenceValues;
 
     Receiver(int id, String name) {
         this.id =id;
         this.name = name;
-        preferredProposers = new ArrayList<>();
+        proposerPreferenceValues = new HashMap<>();
     }
 
     String getName() {
@@ -17,13 +18,13 @@ public class Receiver implements MatchingObject {
     }
 
     public void addPreference(int[] ids) {
-        for (int value : ids) {
-            preferredProposers.add(value);
+        for(int idx = 0; idx < ids.length; idx++) {
+            proposerPreferenceValues.put(ids[idx], ids.length - idx);
         }
     }
 
     boolean tryMatch(int id, int curMatchId) {
-        return preferredProposers.indexOf(id) < preferredProposers.indexOf(curMatchId);
+        return proposerPreferenceValues.get(id) > proposerPreferenceValues.get(curMatchId);
     }
 
 
