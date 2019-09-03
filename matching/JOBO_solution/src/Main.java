@@ -8,8 +8,9 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-//            String tempPath = System.getProperty("user.dir") + "/src/sm-friends-in.txt";
-            String tempPath = "/Users/joakim/Development/itu/algorithm-design/algdes-labs/matching/data/sm-bbt-in.txt";
+            // String tempPath = System.getProperty("user.dir") + "/src/sm-friends-in.txt";
+            // String tempPath = "/Users/joakim/Development/itu/algorithm-design/algdes-labs/matching/data/sm-bbt-in.txt";
+            String tempPath = args[0];
             File file = new File(tempPath);
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
