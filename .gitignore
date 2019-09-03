@@ -25,3 +25,4 @@
 *.fdb_latexmk
 *.fls
 .DS_STORE
+*.class
