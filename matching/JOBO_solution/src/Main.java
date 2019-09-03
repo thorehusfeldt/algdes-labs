@@ -57,51 +57,69 @@ public class Main {
                 }
             }
 
-            HashMap<Proposer, Receiver> result = galeShapley(proposers.values(), receivers);
-
+            HashMap<Receiver, Proposer> result = galeShapley(proposers.values(), receivers);
             for (Proposer p : proposers.values()) {
-                Receiver r = result.get(p);
+                Receiver r = getCurrentMatch(p, result);
                 System.out.println("" + p.getName() + " -- " + r.getName());
             }
 
         } catch(Exception ex) {
-            System.out.println(ex);
+        	ex.printStackTrace();
         }
     }
 
-    private static HashMap<Proposer, Receiver> galeShapley(Collection<Proposer> proposers, HashMap<Integer, Receiver> receivers) {
+    private static HashMap<Receiver, Proposer> galeShapley(Collection<Proposer> proposers, HashMap<Integer, Receiver> receivers) {
 
-        LinkedList<Proposer> proposersList = new LinkedList<>(proposers);
-        HashMap<Proposer, Receiver> matches = new HashMap<>();
-
-        while (!proposersList.isEmpty()) {
-            for (Proposer p : proposersList) {
+        Stack<Proposer> availableProposers = new Stack();
+        // Fill available proposers stack with every proposer at start
+        for(Proposer p : proposers) {
+            availableProposers.push(p);
+        }
+        HashMap<Receiver, Proposer> matches = new HashMap<>();
+        Proposer p;
+            while(!availableProposers.empty()) {
+                p = availableProposers.pop();
+                // Pop next preference off of preference stack
                 int receiverId = p.getNextPreferenceId();
                 if (receiverId == -1) {
-                    matches.put(p, null);
-                    proposersList.remove(p);
+                    matches.put(null, p);
+                    // availableProposers.remove(p);
                     continue;
                 }
                 Receiver r = receivers.get(receiverId);
-                if (r.isFree()) {
-                    p.setNewMatch(r);
-                    r.setNewMatch(p);
-                    matches.put(p, r);
-                    proposersList.remove(p);
-                    break;
+                // Does r already have a match?
+                if (matches.get(r) == null) {
+                    matches.put(r, p);
+                    // availableProposers.remove(p);
+                    // break;
                 } else {
-                    if (r.tryMatch(p.getId())) {
-                        matches.remove(r.getCurrentMatch());
-                        proposersList.add(r.getCurrentMatch());
-                        p.setNewMatch(r);
-                        r.setNewMatch(p);
-                        matches.put(p, r);
-                        proposersList.remove(p);
-                        break;
+                    Proposer currentlyMatchedProposer = matches.get(r);
+                    // Does r prefer p to the currently matched proposer?
+                    if (r.tryMatch(p.getId(), currentlyMatchedProposer.getId())) {
+                        // Remove the match that receiver r is currently involved in
+                        // matches.remove(r);
+                        // Add the (now available) proposer back to the stack of available proposers
+                        availableProposers.push(currentlyMatchedProposer);
+                        // Add the match to list of matches - previous pair is overwritten
+                        matches.put(r, p);
+                        // break;
+                    } else {
+                        // Nothing happened, re-add proposer as available
+                        availableProposers.push(p);
                     }
                 }
             }
-        }
         return matches;
+    }
+    // Get the proposer p's matched receiver
+    // Both receivers and proposers are unique, so doing a reverse (value -> key) lookup in a map is safe
+    public static Receiver getCurrentMatch(Proposer p, HashMap<Receiver, Proposer> matches) {
+        Receiver r = null;
+        for (Map.Entry<Receiver, Proposer> entry : matches.entrySet()) {
+            if(entry.getValue().getId() == p.getId()) {
+                r = entry.getKey();
+            }
+        }
+        return r;
     }
 }

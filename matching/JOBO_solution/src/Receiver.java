@@ -5,15 +5,11 @@ public class Receiver implements MatchingObject {
     private int id;
     private String name;
     private ArrayList<Integer> preferredProposers;
-    private Proposer currentMatch;
-    private boolean hasMatch;
 
     Receiver(int id, String name) {
         this.id =id;
         this.name = name;
         preferredProposers = new ArrayList<>();
-        currentMatch = null;
-        hasMatch = false;
     }
 
     public int getId() {
@@ -30,20 +26,9 @@ public class Receiver implements MatchingObject {
         }
     }
 
-    Proposer getCurrentMatch() {
-        return currentMatch;
+    boolean tryMatch(int id, int curMatchId) {
+        return preferredProposers.indexOf(id) < preferredProposers.indexOf(curMatchId);
     }
 
-    boolean isFree() {
-        return !hasMatch;
-    }
 
-    boolean tryMatch(int id) {
-        return preferredProposers.indexOf(id) < preferredProposers.indexOf(currentMatch.getId());
-    }
-
-    void setNewMatch(Proposer newMatch) {
-        hasMatch = true;
-        currentMatch = newMatch;
-    }
 }
