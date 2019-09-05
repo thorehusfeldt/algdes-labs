@@ -70,7 +70,8 @@ public class Main {
                 // Pop next preference off of preference stack
                 int receiverId = p.getNextPreferenceId();
                 if (receiverId == -1) {
-                    matches.put(null, p);
+                    // Current proposer has no preferences left, continue to next available proposer
+                    // Current proposer will not be put back on the stack.
                     continue;
                 }
                 Receiver r = receivers.get(receiverId);
