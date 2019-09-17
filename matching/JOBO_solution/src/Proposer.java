@@ -15,11 +15,11 @@ public class Proposer implements MatchingObject {
         return this.id;
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public void addPreference(int[] ids) {
+    public void addPreferences(int[] ids) {
         for (int i = ids.length - 1; i >= 0; i--) {
             preferredReceivers.push(ids[i]);
         }

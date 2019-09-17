@@ -13,11 +13,11 @@ public class Receiver implements MatchingObject {
         proposerPreferenceValues = new HashMap<>();
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public void addPreference(int[] ids) {
+    public void addPreferences(int[] ids) {
         for(int idx = 0; idx < ids.length; idx++) {
             proposerPreferenceValues.put(ids[idx], ids.length - idx);
         }
@@ -26,6 +26,4 @@ public class Receiver implements MatchingObject {
     boolean tryMatch(int id, int curMatchId) {
         return proposerPreferenceValues.get(id) > proposerPreferenceValues.get(curMatchId);
     }
-
-
 }

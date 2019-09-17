@@ -1,4 +1,5 @@
 public interface MatchingObject {
 
-    public void addPreference(int[] ids);
+    void addPreferences(int[] ids);
+    String getName();
 }

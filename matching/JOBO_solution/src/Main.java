@@ -39,9 +39,9 @@ public class Main {
                         preferenceIds[i - 1] = Integer.parseInt(lineParts[i]);
                     }
                     if (index % 2 == 1) {
-                        proposers.get(index).addPreference(preferenceIds);
+                        proposers.get(index).addPreferences(preferenceIds);
                     } else {
-                        receivers.get(index).addPreference(preferenceIds);
+                        receivers.get(index).addPreferences(preferenceIds);
                     }
                 }
             }
