@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1QxRTkVOeLAnEtJinsPyhhgLYVg" />
-=======
   <component name="ChangeListManager">
-    <list default="true" id="1e1fb39d-4a95-4a21-9ed6-b9c7f0b0d359" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/matching/magc-solution/out/production/magc-solution/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/matching/magc-solution/out/production/magc-solution/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matching/magc-solution/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/matching/magc-solution/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="8f47187d-3435-4005-943a-a0341f5908b3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,16 +9,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1QJhZLouCw7PJmbOvBcKmvPdNUP" />
->>>>>>> f9070c056f1fa6ea7fdfdd1b47420013ed08ac42
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Q0qHZL1toBvJZTIE4UeVSHMc4c" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
   </component>
-<<<<<<< HEAD
-=======
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -45,11 +40,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1e1fb39d-4a95-4a21-9ed6-b9c7f0b0d359" name="Default Changelist" comment="" />
-      <created>1567494660618</created>
+      <changelist id="8f47187d-3435-4005-943a-a0341f5908b3" name="Default Changelist" comment="" />
+      <created>1566917773804</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1567494660618</updated>
+      <updated>1566917773804</updated>
     </task>
     <servers />
   </component>
@@ -64,5 +59,4 @@
       </map>
     </option>
   </component>
->>>>>>> f9070c056f1fa6ea7fdfdd1b47420013ed08ac42
 </project>
