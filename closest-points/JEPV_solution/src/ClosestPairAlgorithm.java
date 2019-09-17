@@ -3,6 +3,6 @@ import java.util.List;
 
 public interface ClosestPairAlgorithm {
 
-    Pair<DoublePoint,DoublePoint> findClosestPair(List<DoublePoint> points);
+    MeasurablePair findClosestPair(List<DoublePoint> points);
 
 }

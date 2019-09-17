@@ -9,8 +9,19 @@ public class DoublePoint extends Point2D.Double {
         this.id = id;
     }
 
-    public String getID() {
-        return this.id;
+    @Override
+    public String toString() {
+        return "[id: " + id + ", x: " + this.x + ", y: " + this.y + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(super.equals(o)) {
+            DoublePoint other = (DoublePoint) o;
+            return this.id.equals(other.id);
+        }
+
+        return false;
     }
 
 }

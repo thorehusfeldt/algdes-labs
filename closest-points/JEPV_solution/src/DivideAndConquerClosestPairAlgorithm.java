@@ -1,5 +1,6 @@
 import javafx.util.Pair;
 
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public class DivideAndConquerClosestPairAlgorithm implements ClosestPairAlgorithm {
 
     @Override
-    public Pair<DoublePoint,DoublePoint> findClosestPair(List<DoublePoint> points) {
+    public MeasurablePair findClosestPair(List<DoublePoint> points) {
 
         List<DoublePoint> points_sorted_by_x = new ArrayList<>(points);
         points_sorted_by_x.sort(Comparator.comparingDouble(point -> point.x));
@@ -21,35 +22,56 @@ public class DivideAndConquerClosestPairAlgorithm implements ClosestPairAlgorith
     private MeasurablePair findClosestPairRecursive(List<DoublePoint> points_sorted_by_x, List<DoublePoint> points_sorted_by_y) {
 
         if(points_sorted_by_x.size() <= 3) {
-            return new MeasurablePair(new NaiveClosestPairAlgorithm().findClosestPair(new ArrayList<>(points_sorted_by_x)));
+            return new NaiveClosestPairAlgorithm().findClosestPair(new ArrayList<>(points_sorted_by_x));
         }
 
         int m = points_sorted_by_x.size() / 2;
         List<DoublePoint> Qx = points_sorted_by_x.subList(0, m);
-        List<DoublePoint> Rx = points_sorted_by_x.subList(m+1, points_sorted_by_x.size());
+        List<DoublePoint> Rx = points_sorted_by_x.subList(m, points_sorted_by_x.size());
         List<DoublePoint> Qy = points_sorted_by_y.subList(0, m);
-        List<DoublePoint> Ry = points_sorted_by_y.subList(m+1, points_sorted_by_y.size());
+        List<DoublePoint> Ry = points_sorted_by_y.subList(m, points_sorted_by_y.size());
 
         MeasurablePair q = findClosestPairRecursive(Qx, Qy);
         MeasurablePair r = findClosestPairRecursive(Rx, Ry);
 
         MeasurablePair currentClosestPair = q.distance() < r.distance() ? q : r;
-        double xStar = points_sorted_by_x.get(points_sorted_by_x.size()-1).x;
-        HashSet<DoublePoint> seperatingLine = new HashSet<>();
+
+
+
+        DoublePoint linePoint1 = Qx.get(Qx.size() - 1);
+        DoublePoint linePoint2 = new DoublePoint(null, linePoint1.x, linePoint1.y + 1);
+
+        Line2D.Double L = new Line2D.Double(linePoint1, linePoint2);
+
+        LinkedList<DoublePoint> S = new LinkedList<>();
+
         for(DoublePoint point : points_sorted_by_x) {
-            if(point.x == xStar) seperatingLine.add(point);
+            if(L.ptLineDist(point) <= currentClosestPair.distance()) {
+                S.add(point);
+            }
+        }
+
+
+        /*double xStar = Qx.get(Qx.size()-1).x;
+        LinkedList<DoublePoint> separatingLine = new LinkedList<>();
+
+        for(DoublePoint point : points_sorted_by_x) {
+            if(point.x == xStar) separatingLine.add(point);
         }
 
         LinkedList<DoublePoint> S = new LinkedList<>();
 
         for(DoublePoint point : points_sorted_by_y) {
-            for(DoublePoint linePoint : seperatingLine) {
-                if(point.distance(linePoint) <= currentClosestPair.distance()) S.add(point);
+            for(DoublePoint linePoint : separatingLine) {
+                if(!point.equals(linePoint) && point.distance(linePoint) <= currentClosestPair.distance()) {
+                    S.add(point);
+                    break;
+                }
             }
-        }
+        }*/
 
         DoublePoint s, sInner;
-        double minDistance = -1;
+        double minDistance = Double.MAX_VALUE;
         MeasurablePair sPair = null;
         int sInnerIndex;
 
@@ -59,14 +81,19 @@ public class DivideAndConquerClosestPairAlgorithm implements ClosestPairAlgorith
                 sInnerIndex = i + j + 1;
                 if(sInnerIndex < S.size()) {
                     sInner = S.get(sInnerIndex);
+
+                    if(s.equals(sInner)) continue;;
+
+                    if(s.distance(sInner) < minDistance) {
+                        minDistance = s.distance(sInner);
+                        sPair = new MeasurablePair(s, sInner);
+                    }
+
                 } else {
                     break;
                 }
 
-                if(minDistance == -1 || s.distance(sInner) < minDistance) {
-                    minDistance = s.distance(sInner);
-                    sPair = new MeasurablePair(s, sInner);
-                }
+
             }
 
         }
@@ -75,21 +102,6 @@ public class DivideAndConquerClosestPairAlgorithm implements ClosestPairAlgorith
             return sPair;
         } else return currentClosestPair;
 
-    }
-
-    private class MeasurablePair extends Pair<DoublePoint,DoublePoint> {
-
-        private MeasurablePair(DoublePoint key, DoublePoint value) {
-            super(key, value);
-        }
-
-        private MeasurablePair(Pair<DoublePoint,DoublePoint> pair) {
-            super(pair.getKey(), pair.getValue());
-        }
-
-        private double distance() {
-            return getKey().distance(getValue());
-        }
     }
 
 }

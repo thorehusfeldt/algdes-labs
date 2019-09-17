@@ -5,10 +5,10 @@ import java.util.List;
 public class NaiveClosestPairAlgorithm implements ClosestPairAlgorithm {
 
     @Override
-    public Pair<DoublePoint,DoublePoint> findClosestPair(List<DoublePoint> points) {
+    public MeasurablePair findClosestPair(List<DoublePoint> points) {
 
-        double closestDistance = -1, currentDistance;
-        Pair<DoublePoint,DoublePoint> closestPair = null;
+        double closestDistance = Double.MAX_VALUE, currentDistance;
+        MeasurablePair closestPair = null;
 
         for(DoublePoint point1 : points) {
             for(DoublePoint point2 : points) {
@@ -17,12 +17,9 @@ public class NaiveClosestPairAlgorithm implements ClosestPairAlgorithm {
 
                 currentDistance = point1.distance(point2);
 
-                if(closestDistance == -1 && closestPair == null) {
+                if(currentDistance < closestDistance) {
                     closestDistance = currentDistance;
-                    closestPair = new Pair<>(point1, point2);
-                } else if(currentDistance < closestDistance) {
-                    closestDistance = currentDistance;
-                    closestPair = new Pair<>(point1, point2);
+                    closestPair = new MeasurablePair(point1, point2);
                 }
             }
         }
