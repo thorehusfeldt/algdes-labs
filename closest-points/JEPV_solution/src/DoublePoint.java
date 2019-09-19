@@ -4,6 +4,25 @@ public class DoublePoint extends Point2D.Double {
 
     private String id;
 
+    public int getIndexInX() {
+        return indexInX;
+    }
+
+    public void setIndexInX(int indexInX) {
+        this.indexInX = indexInX;
+    }
+
+    public int getIndexInY() {
+        return indexInY;
+    }
+
+    public void setIndexInY(int indexInY) {
+        this.indexInY = indexInY;
+    }
+
+    private int indexInX;
+    private int indexInY;
+
     public DoublePoint(String id, double x, double y) {
         super(x, y);
         this.id = id;

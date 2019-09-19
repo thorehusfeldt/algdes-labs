@@ -28,8 +28,12 @@ public abstract class Parser {
             }
 
             String[] pointInfo;
-            while((input = br.readLine()) != null && !input.equals("EOF")) {
+            while((input = br.readLine()) != null && !input.contains("EOF")) {
                 pointInfo = input.trim().split("\\s+");
+                /*for(String s : pointInfo) {
+                    System.out.println(s);
+                    System.out.println("-----");
+                }*/
                 result.add(new DoublePoint(pointInfo[0], Double.parseDouble(pointInfo[1]), Double.parseDouble(pointInfo[2])));
             }
 

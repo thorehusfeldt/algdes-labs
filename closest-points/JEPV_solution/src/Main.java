@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<DoublePoint> points = Parser.parse("../data/u1432-tsp.txt");
+        List<DoublePoint> points = Parser.parse("../data/rl5934-tsp.txt");
         ClosestPairAlgorithm naive = new NaiveClosestPairAlgorithm();
         ClosestPairAlgorithm divideAndConquer = new DivideAndConquerClosestPairAlgorithm();
 
