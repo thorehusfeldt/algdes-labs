@@ -1,16 +1,15 @@
-import javafx.util.Pair;
+public class MeasurablePair {
 
-public class MeasurablePair extends Pair<DoublePoint,DoublePoint> {
+    DoublePoint point1;
+    DoublePoint point2;
 
-    public MeasurablePair(DoublePoint key, DoublePoint value) {
-        super(key, value);
+    public MeasurablePair(DoublePoint point1, DoublePoint point2) {
+        this.point1 = point1;
+        this.point2 = point2;
     }
 
-    public MeasurablePair(Pair<DoublePoint,DoublePoint> pair) {
-        super(pair.getKey(), pair.getValue());
-    }
 
     public double distance() {
-        return getKey().distance(getValue());
+        return point1.distance(point2);
     }
 }
