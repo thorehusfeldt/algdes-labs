@@ -27,3 +27,6 @@
 .DS_STORE
 *.class
 */.idea/
+.vscode/
+*.iml
+out/
