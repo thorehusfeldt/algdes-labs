@@ -2,7 +2,7 @@
 
 ## rail.txt
 
-The input file “rail.txt” describes a flow network.
+The input file “rail.txt” describes the network of capacitated railway connections.
 * on the first row, the number of nodes *n*,
 * *n* rows containing descriptive names of nodes *0*,...,*n*–1.
 The names can be a word like “ORIGINS” or a number like “2”.
