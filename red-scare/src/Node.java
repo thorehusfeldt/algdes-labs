@@ -2,11 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Node {
+	private int id;
 	private String name;
+	private boolean isRed;
 	private List<Edge> edges = new ArrayList<>();
 
-	public Node(String name){
+	public Node(int id, String name, boolean isRed){
+		this.id = id;
 		this.name = name;
+		this.isRed = isRed;
+	}
+
+	public Node(String name) {
+		this.name = name;
+		this.isRed = false;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public List<Edge> getEdges() {

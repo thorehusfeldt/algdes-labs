@@ -2,7 +2,7 @@ class Edge implements Comparable<Edge> {
 	private Node from;
 	private Node to;
 
-	public Edge(Node from, Node to, int capacity){
+	public Edge(Node from, Node to){
 		this.from = from;
 		this.to = to;
 	}
@@ -23,7 +23,7 @@ class Edge implements Comparable<Edge> {
 
 	@Override
 	public String toString(){
-		return "(" + this.from.getName() + ", " + this.to.getName() + ")";
+		return "(" + this.from.getName() + " -- " + this.to.getName() + ")";
 	}
 
 }
