@@ -30,14 +30,13 @@ public class Parser {
 			nodes.put(verticeNames[1], end);
 
 			// Parse Vertices
-			for (int i = 2; i <= numVertices; i++) {
+			for (int i = 2; i < 2 + numVertices; i++) {
 				String line = lines.get(i);
 				String nodeName = line.replace("*", "").strip();
 				nodes.put(nodeName, new Node(i, nodeName, line.contains("*")));
-				System.out.println(nodeName);
 			}
 			// Parse edges
-			for(int i = numVertices + 3; i <= 2 + numVertices + numEdges; i++) {
+			for(int i = numVertices + 3; i < 2 + numVertices + numEdges; i++) {
 				// U -- V or U -> V
 				String line = lines.get(i);
 				String[] lineParts = line.split("\\s+");
@@ -45,9 +44,6 @@ public class Parser {
 				boolean isDirected = line.contains(">");
 				Node from = nodes.get(lineParts[0]);
 				Node to = nodes.get(lineParts[2]);
-				if(to == null) {
-					System.out.println(line);
-				}
 
 				Edge e = new Edge(from, to);
 				edges.add(e);
