@@ -37,7 +37,7 @@ public class Parser {
 				nodes.put(nodeName, new Node(i, nodeName, line.contains("*")));
 			}
 			// Parse edges
-			for(int i = numVertices + 3; i < 2 + numVertices + numEdges; i++) {
+			for(int i = numVertices + 2; i < 2 + numVertices + numEdges; i++) {
 				// U -- V or U -> V
 				String line = lines.get(i);
 				String[] lineParts = line.split("\\s+");
@@ -49,15 +49,19 @@ public class Parser {
 				Edge e = new Edge(from, to);
 				edges.add(e);
 				from.addEdge(e);
+				if (start.getName() == from.getName()) start.addEdge(e);
 				if(isDirected) {
 					foundDirectedEdge = true;
 				} else {
 					// Add reverse edge if we are not directed
 					Edge eRev = new Edge(to, from);
+					if (start.getName() == to.getName()) from.addEdge(e);
 					edges.add(eRev);
 					to.addEdge(eRev);
 				}
 			}
+			start = nodes.get(start.getName());
+			end = nodes.get(end.getName());
 			return new Graph(nodes, edges, foundDirectedEdge, cardinality, start, end);
 
 		} catch (IOException ex) {
