@@ -22,8 +22,8 @@ class Edge implements Comparable<Edge> {
 	}
 
 	@Override
-	public String toString(){
-		return "(" + this.from.getName() + " -- " + this.to.getName() + ")";
+	public String toString() {
+		return "(" + this.from.getName() + " -> " + this.to.getName() + ")";
 	}
 
 }
