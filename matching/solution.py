@@ -4,11 +4,11 @@ import re
 def parse_stdin():
     finding_candidates = True
     count = 0
-    reachers = {}
-    settlers = {}
-    preferences = {}
+    reachers = {}           # Pursuers attempting to match with their preferences
+    settlers = {}           # Pursued settling for an approaching candidate
+    preferences = {}        # The preferences for all candidates
     candidate_count = 0
-    ranking = {}
+    ranking = {}            # A rank[settler][reacher] instant lookup for settlers' preference
 
     for line in sys.stdin:
         line = line.strip()
@@ -37,13 +37,12 @@ def parse_stdin():
         if preference_match: 
             prefs = preference_match[0][1].split(' ')
             preferences[preference_match[0][0]] = prefs
+            if preference_match[0][0] in settlers:
+                ranking[preference_match[0][0]] = {}
+                for index, preference in enumerate(prefs):
+                    ranking[preference_match[0][0]][preference] = index
 
-    for settler in settlers: 
-        ranking[settler] = {}
-        for index, preference in enumerate(preferences[settler]): 
-            ranking[settler][preference] = index
-
-    return count, reachers, settlers, preferences, ranking
+    return reachers, settlers, preferences, ranking
 
 
 def stable_match(reachers, settlers, preferences, ranking):
@@ -54,13 +53,15 @@ def stable_match(reachers, settlers, preferences, ranking):
     while not_matched:
         reacher = not_matched.pop()
         if preferences[reacher]:
-            preference = preferences[reacher].pop(0)
+            # Use preference stack for getting reacher preferences in order (constant time)
+            preference = preferences[reacher].pop(0) 
 
             if preference not in matched_settlers: 
                 matched_reachers[reacher] = preference
                 matched_settlers[preference] = reacher
             else: 
                 settled_with = matched_settlers[preference]
+                # Use preference lookup table for getting settler preferences (constant time)
                 likes_current_more = ranking[preference][settled_with] < ranking[preference][reacher]
                 if (likes_current_more):
                     not_matched.add(reacher)
@@ -78,6 +79,6 @@ def print_result(results, reachers, settlers):
         to_print = f"{reachers[result[0]]} -- {settlers[result[1]]}"
         print(to_print)
 
-count, reachers, settlers, preferences, ranking = parse_stdin()
+reachers, settlers, preferences, ranking = parse_stdin()
 result = stable_match(reachers, settlers, preferences, ranking)
 print_result(result, reachers, settlers)
