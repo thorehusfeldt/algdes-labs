@@ -1,0 +1,1 @@
+# Parse input data from string to some data structure
