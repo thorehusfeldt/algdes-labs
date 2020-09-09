@@ -11,14 +11,14 @@ def translate_N(L, dist):
     if L == []: return L
     miny = min([y for (x,y) in L])
     if miny > 0: miny = 0
-    else: return map(lambda (x, y): (x, y - miny + dist), L)
+    else: return map(lambda x, y: (x, y - miny + dist), L)
 
 def translate_S(L, dist):
     """ Translate the points in L south, so that they lie at y <= -dist """
     if L == []: return L
     maxy = max([y for (x,y) in L])
     if maxy < 0: maxy = 0
-    else: return map(lambda (x,y): (x, y - maxy - dist), L)
+    else: return map(lambda x, y: (x, y - maxy - dist), L)
 
 
 def distribute_points(k, w, delta, x_mid):
@@ -50,5 +50,5 @@ L = distribute_points(int(sys.argv[1]),1,1,0)
 random.shuffle(L)
 id = 0
 for (x,y) in L:
-    print "{0}  {1} {2}".format(id, x , y)
+    print("{0} {1} {2}".format(id, x , y))
     id += 1
