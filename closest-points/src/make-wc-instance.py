@@ -49,6 +49,6 @@ def distribute_points(k, w, delta, x_mid):
 L = distribute_points(int(sys.argv[1]),1,1,0)
 random.shuffle(L)
 id = 0
-for (x,y) in L:
+for (x, y) in L:
     print("{0} {1} {2}".format(id, x , y))
     id += 1
