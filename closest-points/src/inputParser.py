@@ -1,16 +1,18 @@
 import sys
 import re
 
-numberRegex = '[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?'
-regex = "^\s*(\w+)\s*(" + numberRegex + ")\s*(" + numberRegex + ")$"
+# numberRegex = '[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?'
+# regex = "^\s*(\w+)\s*(" + numberRegex + ")\s*(" + numberRegex + ")$"
+regex = re.compile('^\s*(?P<name>\w+)\s*(?P<x>([-+]?\d+(\.\d+)?([eE]?\+\d+)?))\s*(?P<y>([-+]?\d+(\.\d+)?([eE]?\+\d+)?))$')
 
-def parseInput():
+def parse_input():
     points = []
     for l in sys.stdin:
-        m = re.search(regex, l)
+        l = l.strip()
+        m = regex.search(l)
         if (m != None):
-            id = m.group(1)
-            x = float(m.group(2))
-            y = float(m.group(3))
-            points.append((x, y, id))
+            name = m.group('name')
+            x = float(m.group('x'))
+            y = float(m.group('y'))
+            points.append((x, y, name))
     return points
