@@ -51,10 +51,12 @@ Note that this definition requires the vertices on a path to be distinct, this i
 The problems we want solved for each graph are the following:
 \begin{description}
   \item[None] Return the length of a shortest $s,t$-path internally avoiding $R$.
-    To be precise, let $P$ be the set of $s,t$-paths using no vertices from $R$ except maybe $s$ and $t$ themselves. Let $l(p)$ denote the length of a path $p$.
+    To be precise, let $P$ be the set of $s,t$-paths $v_1,\ldots, v_l$ such that $v_i\notin R$ if $1<i<l$.
+    Let $l(p)$ denote the length of a path $p$.
     Return $\min\{\,l(p)\colon p\in P\,\}$.
     If no such path exists, return `-1'.
-    Note that if the edge $st$ exists then the answer is 1, no matter the colour of $s$ or $t$.
+    Note that the edge $st$, if it exists, is an $s,t$-path with $l=2$.
+    Thus, if $st\in E(G)$ then the answer is 1, no matter the colour of $s$ or $t$.
     In $G_{\text{ex}}$, the answer is 3 (because of the path 0, 1, 2, 3.)
   \item[Some] Return `true' if there is a path from $s$ to $t$ that includes at least one vertex from $R$.
     Otherwise, return `false.'
